@@ -16,12 +16,11 @@
 
 <header>
   <div class="navbar">
-    <div class="logo">
+    <a href="index.html" class="logo">
       <img src="https://images.squarespace-cdn.com/content/v1/68266ed95a60b919ec331d15/170b0cb3-7363-4ecd-a1c9-6517e4c51e81/Copy+of+Untitled+%28150+x+150+px%29.png?format=100w" alt="EPW Logo" style="max-height: 55px; width: auto;" />
       <div class="logo-text"><small>ESCONDIDO</small><span>POP WARNER</span></div>
-    </div>
+    </a>
     <nav class="nav-links">
-      <a href="index.html">Home</a>
       <a href="programs.html">Programs</a>
       <a href="divisions.html">Divisions</a>
       <a href="cheer.html">Cheer</a>
@@ -29,10 +28,23 @@
       <a href="safety.html">Safety</a>
       <a href="forms.html">Forms</a>
     </nav>
-    <a href="https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/22184&app_name=Escondido+Pop+Warner&portalid=22184&instancekey=tshq" target="_blank" class="cta-button">REGISTER</a>
+    <button class="popup-trigger cta-button">REGISTER</button>
     <button class="menu-toggle">☰</button>
   </div>
 </header>
+
+<!-- POPUP WIDGET -->
+<div class="popup-overlay" id="registerPopup">
+  <div class="popup-widget">
+    <button class="popup-close" onclick="document.getElementById('registerPopup').classList.remove('active')">✕</button>
+    <div class="popup-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/68266ed95a60b919ec331d15/170b0cb3-7363-4ecd-a1c9-6517e4c51e81/Copy+of+Untitled+%28150+x+150+px%29.png?format=100w" alt="EPW Logo" />
+      <h2>Join the Wolfpack</h2>
+      <p>Register your athlete today</p>
+    </div>
+    <a href="https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/22184&app_name=Escondido+Pop+Warner&portalid=22184&instancekey=tshq" target="_blank" class="popup-register">Register Here</a>
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-content">

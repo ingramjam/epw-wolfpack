@@ -4,6 +4,25 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('EPW Wolfpack Website Loaded');
 
+  // Popup widget functionality
+  const popupTrigger = document.querySelector('.popup-trigger');
+  const registerPopup = document.getElementById('registerPopup');
+
+  if (popupTrigger && registerPopup) {
+    popupTrigger.addEventListener('click', function() {
+      registerPopup.classList.add('active');
+    });
+  }
+
+  // Close popup when clicking overlay
+  if (registerPopup) {
+    registerPopup.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+      }
+    });
+  }
+
   // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -50,3 +69,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
