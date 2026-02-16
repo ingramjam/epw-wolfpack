@@ -1,5 +1,4 @@
-import AnnouncementBanner from "@/components/AnnouncementBanner";
-import HeroSection from "@/components/HeroSection";
+import HeroCarousel from "@/components/HeroCarousel";
 import ProgramCard from "@/components/ProgramCard";
 import { FaFutbol, FaChild, FaMusic } from "react-icons/fa";
 import Link from "next/link";
@@ -10,19 +9,19 @@ export default function Home() {
 
   return (
     <>
-      <AnnouncementBanner />
-      <HeroSection />
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
-      {/* Programs Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Programs Section - NFL Style Grid */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-              Our Programs
+          <div className="mb-12">
+            <p className="text-blue-900 font-bold text-sm tracking-widest mb-2">OUR PROGRAMS</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
+              Champion Programs for Young Athletes
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From flag football to tackle football to competitive cheer, EPW offers
-              something for every young athlete.
+            <p className="text-xl text-gray-600 max-w-3xl">
+              From flag football to tackle football to competitive cheer, EPW offers something for every young athlete ages 5-14.
             </p>
           </div>
 
@@ -55,122 +54,147 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 bg-white">
+      {/* Featured Section - About EPW */}
+      <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Welcome to Escondido Pop Warner
+              <h2 className="text-4xl sm:text-5xl font-black mb-6">
+                Escondido Pop Warner
               </h2>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                A Legacy of Excellence since 1968, Escondido Pop Warner (EPW) is a
-                proud part of the community dedicated to offering a fun, safe, and
-                structured environment for kids to learn, grow, and compete.
+              <p className="text-lg text-blue-100 mb-4 leading-relaxed">
+                Since 1968, Escondido Pop Warner has been the premier youth football organization in San Diego County. We're committed to building champions—both on and off the field.
               </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Whether you're starting with flag or ready for tackle, EPW is where young
-                athletes build confidence, discipline, and lasting friendships. Our focus on
-                safety, academic achievement, and character development creates an experience
-                that extends far beyond the field.
+              <p className="text-lg text-blue-100 mb-8 leading-relaxed">
+                Our programs emphasize safety, academic achievement, character development, and teamwork. Whether your child is starting with flag football or ready for tackle football, EPW provides a structured, supportive environment where they can thrive.
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/about"
-                  className="inline-block bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+                  className="inline-block bg-yellow-500 text-blue-900 px-8 py-3 rounded-lg font-black hover:bg-yellow-400 transition-colors text-center"
                 >
-                  Learn More
+                  LEARN OUR STORY
                 </Link>
                 <a
                   href={registrationLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block border-2 border-blue-900 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 hover:text-white transition-colors"
+                  className="inline-block border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-lg font-black hover:bg-yellow-500 hover:text-blue-900 transition-colors text-center"
                 >
-                  Join Wolfpack
+                  JOIN NOW
                 </a>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white h-96 flex flex-col justify-center">
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-3xl font-bold mb-2">50+</h3>
-                  <p>Years of Excellence</p>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold mb-2">1000s</h3>
-                  <p>Young Athletes Developed</p>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold mb-2">3</h3>
-                  <p>Premier Programs</p>
-                </div>
+
+            {/* Stats Box */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-blue-800/50 backdrop-blur p-6 rounded-xl border border-blue-700">
+                <div className="text-4xl font-black mb-2">50+</div>
+                <p className="text-blue-200">Years of Excellence</p>
+              </div>
+              <div className="bg-blue-800/50 backdrop-blur p-6 rounded-xl border border-blue-700">
+                <div className="text-4xl font-black mb-2">1000s</div>
+                <p className="text-blue-200">Young Athletes</p>
+              </div>
+              <div className="bg-blue-800/50 backdrop-blur p-6 rounded-xl border border-blue-700">
+                <div className="text-4xl font-black mb-2">3</div>
+                <p className="text-blue-200">Premier Programs</p>
+              </div>
+              <div className="bg-blue-800/50 backdrop-blur p-6 rounded-xl border border-blue-700">
+                <div className="text-4xl font-black mb-2">West Coast</div>
+                <p className="text-blue-200">Conference</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats/Community Section */}
-      <section className="py-20 bg-blue-900 text-white">
+      {/* Quick Actions - Professional Sports Layout */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Join the Wolfpack</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              EPW is committed to building champions both on and off the field. Our programs
-              focus on safety, academics, character development, and teamwork.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Calendar Card */}
+            <Link href="/calendar" className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all">
+              <div className="bg-blue-900 h-24 flex items-center justify-center text-5xl group-hover:bg-blue-800 transition-colors">
+                📅
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Schedule</h3>
+                <p className="text-gray-600">View season schedule and key dates</p>
+              </div>
+            </Link>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">1968</div>
-              <p className="text-blue-100">Founded</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">3</div>
-              <p className="text-blue-100">Premier Programs</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">West Coast</div>
-              <p className="text-blue-100">Conference</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold mb-2">5-14</div>
-              <p className="text-blue-100">Age Range</p>
-            </div>
-          </div>
+            {/* News Card */}
+            <Link href="/news" className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all">
+              <div className="bg-blue-900 h-24 flex items-center justify-center text-5xl group-hover:bg-blue-800 transition-colors">
+                📰
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">News & Updates</h3>
+                <p className="text-gray-600">Latest announcements and stories</p>
+              </div>
+            </Link>
 
-          <div className="text-center">
-            <a
-              href={registrationLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
-            >
-              REGISTER NOW - 2026 SEASON
+            {/* Store Card */}
+            <a href="https://rebelsportsgroup.com/escondido_pop_warner/shop/home" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all">
+              <div className="bg-blue-900 h-24 flex items-center justify-center text-5xl group-hover:bg-blue-800 transition-colors">
+                🛍️
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">EPW Store</h3>
+                <p className="text-gray-600">Official gear and apparel</p>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Quick Links */}
-      <section className="py-12 bg-gray-100">
+      {/* Community Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <Link href="/calendar" className="hover:text-blue-900 transition-colors">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">📅 Calendar</h3>
-              <p className="text-gray-600">View schedules and events</p>
-            </Link>
-            <Link href="/news" className="hover:text-blue-900 transition-colors">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">📰 News</h3>
-              <p className="text-gray-600">Latest updates and stories</p>
-            </Link>
-            <a href="https://rebelsportsgroup.com/escondido_pop_warner/shop/home" target="_blank" rel="noopener noreferrer" className="hover:text-blue-900 transition-colors">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">🛍️ Store</h3>
-              <p className="text-gray-600">EPW gear and apparel</p>
-            </a>
+          <div className="text-center mb-12">
+            <p className="text-blue-900 font-bold text-sm tracking-widest mb-2">GET INVOLVED</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
+              Make a Difference
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              EPW thrives because of our dedicated volunteers and community members. Whether you can coach, help with events, or support in other ways, we need you!
+            </p>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Link href="/volunteer" className="group bg-gradient-to-br from-blue-900 to-blue-950 text-white p-8 rounded-lg hover:shadow-lg transition-all">
+              <h3 className="text-2xl font-black mb-2 group-hover:text-yellow-400 transition-colors">Volunteer</h3>
+              <p className="text-blue-100 mb-4">Help us build the next generation of champions</p>
+              <span className="inline-block text-yellow-400 font-bold">Learn More →</span>
+            </Link>
+
+            <Link href="/board" className="group bg-gradient-to-br from-indigo-900 to-blue-950 text-white p-8 rounded-lg hover:shadow-lg transition-all">
+              <h3 className="text-2xl font-black mb-2 group-hover:text-yellow-400 transition-colors">Leadership</h3>
+              <p className="text-blue-100 mb-4">Meet our board members and volunteer leaders</p>
+              <span className="inline-block text-yellow-400 font-bold">Meet the Team →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 bg-yellow-500">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-black text-blue-900 mb-4">
+            Ready to Join the Wolfpack?
+          </h2>
+          <p className="text-lg text-blue-900 mb-8 font-semibold">
+            Registration is open! Early bird pricing ends February 15th, 2026.
+          </p>
+          <a
+            href={registrationLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-900 text-white px-10 py-4 rounded-lg font-black text-lg hover:bg-blue-800 transition-colors"
+          >
+            REGISTER NOW
+          </a>
         </div>
       </section>
     </>
