@@ -26,6 +26,7 @@
         const React = window.React;
         const ReactDOM = window.ReactDOM;
         const e = React.createElement;
+        const Fragment = React.Fragment;
 
         // --- DATA STRUCTURES & THEME ---
         const theme = {
@@ -54,42 +55,45 @@
         const POSITIONS_INFO = [
           {
             group: "Defensive Linemen (The Trench Monsters)",
-            desc: "You are the tip of the spear. We don't read and react; we attack and destroy. Your job is to reset the line of scrimmage in the offensive backfield.",
+            desc: "You are the tip of the spear. We don't read and react; we attack and destroy. Your job is to reset the line of scrimmage in the offensive backfield. If the QB isn't having nightmares about you, you aren't hitting hard enough.",
             roles: [
-              { id: 'LE', name: "Left End (LE)", role: "The edge assassin. Pin your ears back and hunt the QB." },
-              { id: 'RE', name: "Right End (RE)", role: "The blindside nightmare. Attack the QB's blind spot." },
-              { id: 'T', name: "Tackle (T)", role: "The B-gap bulldozer. You are a wrecking ball." },
-              { id: 'N', name: "Nose Tackle (N)", role: "The A-gap anchor. Make the Center regret playing." }
-            ]
+              { id: 'LE', name: "Left End (LE)", role: "The edge assassin. Pin your ears back and hunt the QB. Set the edge violently in the run game. Nothing gets outside of you. Period.", comps: [{ name: "Myles Garrett", url: "https://www.youtube.com/results?search_query=myles+garrett+highlights" }, { name: "Maxx Crosby", url: "https://www.youtube.com/results?search_query=maxx+crosby+highlights" }] },
+              { id: 'RE', name: "Right End (RE)", role: "The blindside nightmare. Same rules as the LE, but you usually attack the QB's blind spot. Squeeze the pocket until it bursts.", comps: [{ name: "Aidan Hutchinson", url: "https://www.youtube.com/results?search_query=aidan+hutchinson+highlights" }, { name: "T.J. Watt", url: "https://www.youtube.com/results?search_query=tj+watt+highlights" }] },
+              { id: 'T', name: "Tackle (T)", role: "The B-gap bulldozer. You are a wrecking ball. Eat double teams like pizza rolls and blow up pulling guards before they even get started.", comps: [{ name: "Chris Jones", url: "https://www.youtube.com/results?search_query=chris+jones+highlights" }, { name: "Jalen Carter", url: "https://www.youtube.com/results?search_query=jalen+carter+highlights" }] },
+              { id: 'N', name: "Nose Tackle (N)", role: "The A-gap anchor. Make the Center regret playing football today. Command double teams so your linebackers can run free and make tackles.", comps: [{ name: "Dexter Lawrence", url: "https://www.youtube.com/results?search_query=dexter+lawrence+highlights" }, { name: "Quinnen Williams", url: "https://www.youtube.com/results?search_query=quinnen+williams+highlights" }] }
+            ],
+            color: "bg-blue-800"
           },
           {
             group: "Linebackers (The Hit Squad)",
-            desc: "The alpha dogs of the defense. You are heat-seeking missiles.",
+            desc: "The alpha dogs of the defense. You are heat-seeking missiles. Diagnose the play, pull the trigger, and meet the ball carrier with bad intentions. We want collisions, not tackles.",
             roles: [
-              { id: 'M', name: "Mike (M)", role: "The field general. You call the shots and plug gaps." },
-              { id: 'W', name: "Will (W)", role: "The weak-side enforcer. Use your speed to chase plays." }
-            ]
+              { id: 'M', name: "Mike (M)", role: "The field general. You call the shots, plug the A-gaps, and knock heads off over the middle. Be loud, be angry, be everywhere.", comps: [{ name: "Fred Warner", url: "https://www.youtube.com/results?search_query=fred+warner+highlights" }, { name: "Roquan Smith", url: "https://www.youtube.com/results?search_query=roquan+smith+highlights" }] },
+              { id: 'W', name: "Will (W)", role: "The weak-side enforcer. Use your speed to chase down plays from behind. When Coach calls your number on a blitz, arrive with violence.", comps: [{ name: "Dre Greenlaw", url: "https://www.youtube.com/results?search_query=dre+greenlaw+highlights" }, { name: "Patrick Queen", url: "https://www.youtube.com/results?search_query=patrick+queen+highlights" }] }
+            ],
+            color: "bg-blue-700"
           },
           {
             group: "Defensive Backs (The No-Fly Zone)",
-            desc: "The apex predators of the secondary. If the ball is in the air, it belongs to you.",
+            desc: "The apex predators of the secondary. If the ball is in the air, it belongs to you. If a receiver comes across the middle, make them pay the toll. No easy catches. No mercy.",
             roles: [
-              { id: 'C', name: "Corners (C)", role: "Island lockdown. Press and suffocate your receiver." },
-              { id: 'F', name: "Free Safety (F)", role: "The centerfield headhunter. Read the QB's eyes." },
-              { id: 'R', name: "Rover (R)", role: "The weak-side hybrid nightmare. Create chaos." },
-              { id: '$', name: "Sam ($)", role: "The strong-side hybrid nightmare. Take away TE." }
-            ]
+              { id: 'C', name: "Corners (C)", role: "Island lockdown. Press, jam, and suffocate your receiver. Make the QB terrified to even look your way.", comps: [{ name: "Sauce Gardner", url: "https://www.youtube.com/results?search_query=sauce+gardner+highlights" }, { name: "Patrick Surtain II", url: "https://www.youtube.com/results?search_query=patrick+surtain+highlights" }] },
+              { id: 'F', name: "Free Safety (F)", role: "The centerfield headhunter. Read the QB's eyes, steal the deep ball, and deliver punishing hits to anyone who crosses the middle.", comps: [{ name: "Kyle Hamilton", url: "https://www.youtube.com/results?search_query=kyle+hamilton+highlights" }, { name: "Minkah Fitzpatrick", url: "https://www.youtube.com/results?search_query=minkah+fitzpatrick+highlights" }] },
+              { id: 'R', name: "Rover (R)", role: "The weak-side hybrid nightmare. Too fast for linemen to block, too strong for receivers. Set the edge, blitz the corner, create chaos.", comps: [{ name: "Derwin James", url: "https://www.youtube.com/results?search_query=derwin+james+highlights" }, { name: "Brian Branch", url: "https://www.youtube.com/results?search_query=brian+branch+highlights" }] },
+              { id: '$', name: "Sam ($)", role: "The strong-side hybrid nightmare. Same ruthless job as the Rover, but you take away the Tight End's will to live on the strong side.", comps: [{ name: "Talanoa Hufanga", url: "https://www.youtube.com/results?search_query=talanoa+hufanga+highlights" }, { name: "Caleb Downs (Ohio St)", url: "https://www.youtube.com/results?search_query=caleb+downs+highlights" }] }
+            ],
+            color: "bg-blue-600"
           }
         ];
 
         const TERMINOLOGY = [
-          { term: "Man Coverage", def: "You stick to one specific opponent. Wherever he goes, you go." },
-          { term: "Zone Coverage", def: "Guard a specific 'box' or area. Keep your eyes on the QB." },
+          { term: "Man Coverage", def: "You stick to one specific opponent. Wherever he goes, you go. Like gum under a desk." },
+          { term: "Zone Coverage", def: "Guard a specific 'box' or area. Keep your eyes on the QB. Don't zone out thinking about your crush." },
           { term: "Blitz", def: "Charging at the Quarterback like he owes you lunch money." },
-          { term: "Stunt / Twist", def: "Linemen switching spots right after the snap." },
-          { term: "Spy", def: "Following the Quarterback everywhere." },
-          { term: "Creep Up", def: "Sneaking closer to the line before the snap to disguise blitz." },
-          { term: "The 'Prevent'", def: "Used late in the game. Back way up. Keep everything in front of you." }
+          { term: "Stunt / Twist", def: "Linemen switching spots right after the snap to confuse the offensive line." },
+          { term: "Spy", def: "Following the Quarterback everywhere. If he scrambles, you introduce him to the turf." },
+          { term: "Creep Up", def: "Sneaking closer to the line of scrimmage before the snap to disguise your blitz." },
+          { term: "The 'Prevent'", def: "Used late in the game. Back way up. Keep everything in front of you. The 'Please Don't Score' defense." }
         ];
 
         const OFFENSE = [
@@ -112,59 +116,20 @@
         };
 
         const PLAYS = [
-          {
-            name: "4-2-5 ASTROS CROWN 3",
-            type: "Base / Slant",
-            desc: "D-Line slants weak. Will and Mike hold gaps. Standard Cover 3 shell behind it."
-          },
-          {
-            name: "4-2-5 BAMA CROWN 3",
-            type: "Blitz",
-            desc: "Double interior pressure. Will and Mike linebackers blitz straight up the middle A-gaps."
-          },
-          {
-            name: "4-2-5 SHATTER CROWN 3",
-            type: "Blitz",
-            desc: "Strong side safety ($) blitzes off the edge. Linebackers shift to cover."
-          },
-          {
-            name: "4-2-5 REAPER CROWN 3",
-            type: "Blitz",
-            desc: "Rover (R) brings heavy pressure from the weak side. Will shifts to cover flat."
-          },
-          {
-            name: "4-2-5 OHIO CROWN 3",
-            type: "Blitz",
-            desc: "Double edge pressure from both Rover (R) and Sam ($). Linebackers cover middle."
-          },
-          {
-            name: "4-2-5 SOCAL CROWN 3",
-            type: "Blitz",
-            desc: "Sam ($) blitzes strong side. Defense shifts strong."
-          },
-          {
-            name: "4-2-5 CALI CROWN 3",
-            type: "Blitz",
-            desc: "Rover blitzes from the weak side. D-line stunts weak."
-          },
-          {
-            name: "4-2-5 RASCAL CROWN 3",
-            type: "Blitz",
-            desc: "Mike linebacker shoots the strong A-gap. Nose slants to B-gap."
-          },
-          {
-            name: "4-2-5 EARTHQUAKE CROWN 3",
-            type: "Max Blitz",
-            desc: "All out pressure! Rover, Will, Mike, and Sam ALL BLITZ. Deep 3 coverage behind it."
-          },
-          {
-            name: "4-2-5 WEAK RASCAL CROWN 3",
-            type: "Blitz",
-            desc: "Overload blitz from the weak side. Rover, Will, and Mike all bring pressure."
-          }
+          { name: "4-2-5 ASTROS CROWN 3", type: "Base / Slant", desc: "D-Line slants weak. Will and Mike hold gaps. Standard Cover 3 shell behind it.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 40 30" }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 52 30" }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48 }, { id: 'M', x: 54, y: 48 }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'T': "Slant hard to the A-gap on the snap. Rip across the center's face.", 'N': "Slant strong to the A-gap. Take the center with you.", 'M': "Stay patient, read the guard, and fill your gap." } },
+          { name: "4-2-5 BAMA CROWN 3", type: "Blitz", desc: "Double interior pressure. Will and Mike linebackers blitz straight up the middle A-gaps.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'W': "Hit that A-gap like it's the last day of school. Fast and low!", 'M': "A-gap speed run. Meet Will at the Quarterback for a high-five.", 'F': "Both LBs are gone! You have to be hyper-aware of quick slants over the middle." } },
+          { name: "4-2-5 SHATTER CROWN 3", type: "Blitz", desc: "Strong side safety ($) blitzes off the edge. Linebackers shift to cover.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { '$': "Creep up slowly before the snap. Don't give it away! Then explode off the edge.", 'M': "You must cover ground towards the strong side since $ is abandoning his zone.", 'RE': "Slant inside hard to take the tackle with you, clearing the lane for $." } },
+          { name: "4-2-5 REAPER CROWN 3", type: "Blitz", desc: "Rover (R) brings heavy pressure from the weak side. Will shifts to cover flat.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Time the snap. You are the Reaper. Bring the heat off the edge!", 'LE': "Slant inside to the B-gap to pull the tackle away from the Rover.", 'W': "Get to the flat immediately to cover the area vacated by the Rover." } },
+          { name: "4-2-5 OHIO CROWN 3", type: "Blitz", desc: "Double edge pressure from both Rover (R) and Sam ($). Linebackers cover middle.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Squeeze the pocket from the outside. Don't let the QB scramble your way.", '$': "Squeeze from the strong side. Meet the Rover at the QB.", 'W': "Head on a swivel. You and Mike have to cover a lot of ground in the flats." } },
+          { name: "4-2-5 Play 32", type: "Blitz", desc: "Complex interior pressure. Rover and Mike blitz opposite gaps while D-Line slants.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 60 30" }, { id: 'RE', x: 64, y: 40, path: "M 64 40 L 68 30" }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 50 30" }, { id: 'R', x: 30, y: 42, blitz: true, path: "M 30 42 L 36 30" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Creep up to linebacker depth before the snap, then shoot the B-gap.", 'M': "Cross over to the strong A-gap. Chaos up the middle!", 'W': "You have middle/flat coverage responsibility. Don't bite on the run fake." } },
+          { name: "4-2-5 SOCAL CROWN 3", type: "Blitz", desc: "Similar to Shatter, Sam ($) blitzes strong side. Defense shifts strong.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40, path: "M 64 40 L 60 30" }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { '$': "Hit the edge with speed. Secure the outside so the QB can't roll out.", 'RE': "Slant hard inside to pull the blockers off the edge blitz.", 'M': "Rotate strong to cover the flat area left open by Sam." } },
+          { name: "4-2-5 CALI CROWN 3", type: "Blitz", desc: "Rover blitzes from the weak side. D-line stunts weak.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 48 30" }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 30 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Read the snap and bring the heat off the left edge.", 'LE': "Slant inside. Make a mess of the B-gap.", 'W': "Roll to the flat. Read the QB's eyes." } },
+          { name: "4-2-5 RASCAL CROWN 3", type: "Blitz", desc: "Mike linebacker shoots the strong A-gap. Nose slants to B-gap.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 60 30" }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'M': "You are the Rascal. Right through the A-gap immediately on snap.", 'N': "Slant out to the B-gap to pull the guard away from Mike.", 'W': "Hold the middle flat zone. Look for crossing routes." } },
+          { name: "4-2-5 EARTHQUAKE CROWN 3", type: "Max Blitz", desc: "All out pressure! Rover, Will, Mike, and Sam ALL BLITZ. Deep 3 coverage behind it.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'C': "No flat help! If they throw short, rally to tackle.", 'F': "You are on an island in the middle. Read the QB, make a play on the ball.", 'W': "Total chaos! Meet the other 3 blitzers at the QB." } },
+          { name: "4-2-5 WEAK RASCAL CROWN 3", type: "Blitz", desc: "Overload blitz from the weak side. Rover, Will, and Mike all bring pressure.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 48 30" }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Overload weak! Come off the edge hot.", 'W': "Hit the A-gap. The O-line won't know who to block.", 'M': "Hit the strong A-gap. Bring the house!" } }
         ];
 
-        function FieldDiagram({ activePosFilter }) {
+        function FieldDiagram({ play, activePosFilter, onPlayerClick }) {
           return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[4/3] max-h-[450px]" },
             e('svg', { viewBox: "0 0 100 100", className: "w-full h-full" },
               e('defs', null,
@@ -175,6 +140,12 @@
               e('g', { stroke: "#ffffff", strokeOpacity: "0.2", strokeWidth: "0.2" },
                 [10, 20, 30, 40, 50, 60, 70, 80, 90].map(y =>
                   e('line', { key: `line-${y}`, x1: "0", y1: y, x2: "100", y2: y })
+                ),
+                [10, 20, 30, 40, 50, 60, 70, 80, 90].map(y =>
+                  e(Fragment, { key: `hash-${y}` },
+                    e('line', { x1: "33", y1: y, x2: "35", y2: y }),
+                    e('line', { x1: "65", y1: y, x2: "67", y2: y })
+                  )
                 )
               ),
               e('line', { x1: "0", y1: "38", x2: "100", y2: "38", stroke: "#3b82f6", strokeWidth: "0.5", strokeDasharray: "1 1" }),
@@ -183,7 +154,30 @@
                   e('circle', { cx: "0", cy: "0", r: "2.5", fill: "#1e293b", stroke: "#cbd5e1", strokeWidth: "0.3" }),
                   e('text', { x: "0", y: "0.8", fontSize: "2", fill: "#cbd5e1", textAnchor: "middle", fontWeight: "bold" }, pos.id)
                 )
-              )
+              ),
+              play.defense.map((pos, idx) => {
+                const isHighlighted = activePosFilter === pos.id || activePosFilter === 'ALL';
+                const opacity = isHighlighted ? 1 : 0.2;
+                if (pos.path) return e('path', { key: `path-${idx}`, d: pos.path, fill: "none", stroke: "#ef4444", strokeOpacity: opacity, strokeWidth: "0.6", strokeDasharray: "1 1", markerEnd: "url(#arrowhead)" });
+                if (pos.zone) {
+                  const yOffset = pos.zone === 'deep' ? 15 : 5;
+                  const rx = pos.zone === 'deep' ? 15 : 10;
+                  const ry = pos.zone === 'deep' ? 8 : 6;
+                  return e('ellipse', { key: `zone-${idx}`, cx: pos.x, cy: pos.y + yOffset, rx, ry, fill: "#3b82f6", fillOpacity: isHighlighted ? 0.2 : 0.05, stroke: "#3b82f6", strokeOpacity: opacity, strokeWidth: "0.3" });
+                }
+                return null;
+              }),
+              play.defense.map((pos, idx) => {
+                const isHighlighted = activePosFilter === pos.id || activePosFilter === 'ALL';
+                const isTargeted = activePosFilter === pos.id;
+                let fillColor = "#1e3a8a";
+                if (pos.blitz) fillColor = "#dc2626";
+                if (isTargeted) fillColor = "#cbd5e1";
+                return e('g', { key: `def-${idx}`, transform: `translate(${pos.x}, ${pos.y})`, onClick: () => onPlayerClick(pos.id), className: `cursor-pointer transition-all duration-300 ${!isHighlighted ? 'opacity-40' : 'opacity-100'}`, style: { filter: isTargeted ? 'drop-shadow(0px 0px 3px rgba(203,213,225,0.8))' : 'none' } },
+                  e('polygon', { points: "0,-2.5 2.5,2.5 -2.5,2.5", fill: fillColor, stroke: "#ffffff", strokeWidth: "0.3" }),
+                  e('text', { x: "0", y: "1.5", fontSize: "2", fill: isTargeted ? '#0f172a' : '#ffffff', textAnchor: "middle", fontWeight: "bold" }, pos.id)
+                );
+              })
             )
           );
         }
@@ -194,9 +188,12 @@
           const [globalFilter, setGlobalFilter] = React.useState('ALL');
 
           const currentTip = React.useMemo(() => {
-            if (globalFilter === 'ALL') return "Select a specific position to learn your assignment!";
+            if (globalFilter === 'ALL') return "Select a specific position above, or click a player on the field to see their specific assignment!";
+            if (selectedPlay.tips && selectedPlay.tips[globalFilter]) return selectedPlay.tips[globalFilter];
             return defaultTips[globalFilter] || "Do your job, read your keys, and tackle hard!";
-          }, [globalFilter]);
+          }, [globalFilter, selectedPlay]);
+
+          const handlePlayerClick = (posId) => setGlobalFilter(posId);
 
           return e('div', { className: `min-h-screen ${theme.bg} ${theme.textBright} pb-20` },
             e('header', { className: `${theme.panel} border-b ${theme.border} shadow-lg p-4 md:p-6 sticky top-0 z-10` },
@@ -210,58 +207,66 @@
                     e('p', { className: "text-sm font-semibold text-slate-300" }, "4-2-5 Defense Playbook")
                   )
                 ),
-                e('select', {
-                  value: globalFilter,
-                  onChange: (evt) => setGlobalFilter(evt.target.value),
-                  className: "bg-blue-900 border border-slate-600 text-slate-200 text-sm rounded-lg p-2 font-bold"
-                },
-                  POSITIONS_LIST.map(pos =>
-                    e('option', { key: pos.id, value: pos.id }, pos.label)
-                  )
+                e('select', { value: globalFilter, onChange: (evt) => setGlobalFilter(evt.target.value), className: "bg-blue-900 border border-slate-600 text-slate-200 text-sm rounded-lg p-2 font-bold" },
+                  POSITIONS_LIST.map(pos => e('option', { key: pos.id, value: pos.id }, pos.label))
                 )
               )
             ),
             e('nav', { className: "max-w-6xl mx-auto px-4 md:px-6 pt-6" },
               e('div', { className: `flex space-x-2 overflow-x-auto pb-2 border-b ${theme.border}` },
-                [
-                  { id: 'dashboard', label: 'Overview' },
-                  { id: 'playbook', label: 'Plays' },
-                  { id: 'positions', label: 'Positions' },
-                  { id: 'terminology', label: 'Terminology' }
-                ].map(tab =>
-                  e('button', {
-                    key: tab.id,
-                    onClick: () => setActiveTab(tab.id),
-                    className: `px-4 py-3 rounded-t-xl font-bold text-sm whitespace-nowrap transition-all ${
-                      activeTab === tab.id 
-                        ? 'bg-blue-900 text-slate-200 border-t-2 border-slate-300' 
-                        : 'text-slate-500 hover:bg-blue-950/50'
-                    }`
-                  }, tab.label)
+                [{ id: 'dashboard', label: 'Locker Room' }, { id: 'playbook', label: 'Playbook Viewer' }, { id: 'positions', label: 'Positional Roles' }, { id: 'terminology', label: 'Secret Words' }].map(tab =>
+                  e('button', { key: tab.id, onClick: () => setActiveTab(tab.id), className: `px-4 py-3 rounded-t-xl font-bold text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'bg-blue-900 text-slate-200 border-t-2 border-slate-300' : 'text-slate-500 hover:bg-blue-950/50'}` }, tab.label)
                 )
               )
             ),
             e('main', { className: "max-w-6xl mx-auto p-4 md:p-6 mt-4" },
-              activeTab === 'dashboard' && e('div', { className: "space-y-6" },
+              activeTab === 'dashboard' && e('div', { className: "space-y-8" },
                 e('div', { className: `${theme.panel} rounded-2xl p-6 md:p-8 border ${theme.border} shadow-xl` },
                   e('h2', { className: "text-3xl font-black mb-4" }, "Welcome to the Pack 🐺"),
-                  e('p', { className: "text-slate-300 text-lg leading-relaxed" }, "The 4-2-5 Defense is built on speed, violence, and communication. We don't wait for the offense to make a move; we dictate the game. Do your job. Read your keys. Tackle hard.")
+                  e('p', { className: "text-slate-300 text-lg leading-relaxed" }, "The 4-2-5 Defense is built on speed, violence, and communication. We don't wait for the offense to make a move; we dictate the game. Whether you're eating blocks in the trenches or playing centerfield in the secondary, do your job. Less TikTok, more tackling.")
+                ),
+                e('div', { className: "grid md:grid-cols-2 gap-6" },
+                  e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6` },
+                    e('h3', { className: `text-xl font-bold text-slate-200 mb-4 border-b ${theme.border} pb-2` }, "Coach's Reminders"),
+                    e('ul', { className: "space-y-4" },
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-blue-400 mt-1" }, "🏈"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200" }, "Talk to Each Other:"),
+                          e('span', { className: "text-slate-400 ml-2" }, "If you aren't talking pre-snap, you're wrong. Point out formations.")
+                        )
+                      ),
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-blue-400 mt-1" }, "🏈"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200" }, "Do YOUR Homework:"),
+                          e('span', { className: "text-slate-400 ml-2" }, "Don't try to play someone else's position. If you have the B-gap, own the B-gap.")
+                        )
+                      )
+                    )
+                  ),
+                  e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6` },
+                    e('h3', { className: `text-xl font-bold text-slate-200 mb-4 border-b ${theme.border} pb-2` }, "Team Resources & Downloads"),
+                    e('div', { className: "space-y-4" },
+                      e('a', { href: "#", className: `flex items-center gap-4 p-4 bg-blue-950 hover:bg-blue-900 rounded-xl border ${theme.border}` },
+                        e('div', { className: "w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center" },
+                          e('svg', { className: "w-5 h-5 text-slate-200", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, e('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" }))
+                        ),
+                        e('div', null,
+                          e('strong', { className: "block text-slate-200" }, "4-2-5 Ring of Fire Manual"),
+                          e('span', { className: "text-xs text-slate-400" }, "Coach Beast's PDF Guide")
+                        )
+                      )
+                    )
+                  )
                 )
               ),
               activeTab === 'playbook' && e('div', { className: "grid lg:grid-cols-3 gap-6" },
                 e('div', { className: `lg:col-span-1 bg-slate-900 border ${theme.border} rounded-2xl p-4 shadow-xl flex flex-col h-[500px]` },
-                  e('h3', { className: "text-lg font-black text-slate-200 mb-4 border-b border-slate-700 pb-2 uppercase" }, "Plays"),
+                  e('h3', { className: "text-lg font-black text-slate-200 mb-4 border-b border-slate-700 pb-2 uppercase" }, "Select Play"),
                   e('div', { className: "flex-1 overflow-y-auto space-y-2" },
                     PLAYS.map((play, idx) =>
-                      e('button', {
-                        key: idx,
-                        onClick: () => setSelectedPlay(play),
-                        className: `w-full text-left p-3 rounded-xl border transition-all ${
-                          selectedPlay.name === play.name 
-                            ? 'bg-blue-600 border-blue-400' 
-                            : 'bg-slate-950 border-slate-800 hover:border-slate-500'
-                        }`
-                      },
+                      e('button', { key: idx, onClick: () => setSelectedPlay(play), className: `w-full text-left p-3 rounded-xl border transition-all ${selectedPlay.name === play.name ? 'bg-blue-600 border-blue-400' : 'bg-slate-950 border-slate-800 hover:border-slate-500'}` },
                         e('span', { className: `font-bold text-sm block ${selectedPlay.name === play.name ? 'text-white' : 'text-slate-300'}` }, play.name),
                         e('span', { className: `text-[10px] uppercase tracking-wider font-semibold ${selectedPlay.name === play.name ? 'text-blue-200' : 'text-red-400'}` }, play.type)
                       )
@@ -269,7 +274,7 @@
                   )
                 ),
                 e('div', { className: "lg:col-span-2 space-y-6" },
-                  e(FieldDiagram, { activePosFilter: globalFilter }),
+                  e(FieldDiagram, { play: selectedPlay, activePosFilter: globalFilter, onPlayerClick: handlePlayerClick }),
                   e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6 shadow-xl` },
                     e('h3', { className: "text-2xl font-black text-white mb-2" }, selectedPlay.name),
                     e('span', { className: "inline-block px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-xs font-bold" }, selectedPlay.type),
@@ -282,32 +287,34 @@
                 )
               ),
               activeTab === 'positions' && e('div', { className: "space-y-6" },
-                POSITIONS_INFO.map((group, idx) =>
-                  e('div', { key: idx, className: `bg-slate-900 border ${theme.border} rounded-2xl overflow-hidden shadow-lg` },
-                    e('div', { className: "px-6 py-4 bg-blue-800 bg-opacity-20 border-b border-blue-900" },
+                POSITIONS_INFO.map((group, idx) => {
+                  if (globalFilter !== 'ALL' && !group.roles.some(r => r.id === globalFilter)) return null;
+                  return e('div', { key: idx, className: `bg-slate-900 border ${theme.border} rounded-2xl overflow-hidden shadow-lg` },
+                    e('div', { className: `px-6 py-4 ${group.color} bg-opacity-20 border-b border-blue-900` },
                       e('h3', { className: "text-xl font-black text-slate-200 uppercase" }, group.group)
                     ),
                     e('div', { className: "p-6" },
                       e('p', { className: "text-slate-300 font-medium mb-6 italic border-l-2 border-slate-600 pl-4" }, `"${group.desc}"`),
                       e('div', { className: "grid md:grid-cols-2 gap-4" },
-                        group.roles.map((role, rIdx) =>
-                          e('div', {
-                            key: rIdx,
-                            onClick: () => setGlobalFilter(role.id),
-                            className: `p-5 rounded-xl border cursor-pointer transition-all ${
-                              globalFilter === role.id 
-                                ? 'bg-blue-900/80 border-slate-300' 
-                                : 'bg-slate-950 border-slate-800 hover:border-slate-600'
-                            }`
-                          },
-                            e('span', { className: `font-black text-lg block mb-2 ${globalFilter === role.id ? 'text-slate-100' : 'text-blue-400'}` }, role.name),
-                            e('span', { className: `text-sm leading-relaxed ${globalFilter === role.id ? 'text-slate-200' : 'text-slate-400'}` }, role.role)
-                          )
-                        )
+                        group.roles.map((role, rIdx) => {
+                          const isHighlighted = globalFilter === role.id;
+                          return e('div', { key: rIdx, onClick: () => setGlobalFilter(role.id), className: `p-5 rounded-xl border cursor-pointer transition-all ${isHighlighted ? 'bg-blue-900/80 border-slate-300' : 'bg-slate-950 border-slate-800 hover:border-slate-600'}` },
+                            e('span', { className: `font-black text-lg block mb-2 ${isHighlighted ? 'text-slate-100' : 'text-blue-400'}` }, role.name),
+                            e('span', { className: `text-sm leading-relaxed block mb-4 ${isHighlighted ? 'text-slate-200' : 'text-slate-400'}` }, role.role),
+                            role.comps && e('div', { className: "mt-auto pt-4 border-t border-slate-800/50" },
+                              e('span', { className: "text-[10px] uppercase font-black text-slate-500 tracking-widest mb-2 block" }, "Watch The Greats"),
+                              e('div', { className: "flex flex-wrap gap-2" },
+                                role.comps.map((comp, cIdx) =>
+                                  e('a', { key: cIdx, href: comp.url, target: "_blank", rel: "noopener noreferrer", onClick: (evt) => evt.stopPropagation(), className: `text-[11px] px-2.5 py-1.5 rounded-lg font-bold transition-colors ${isHighlighted ? 'bg-blue-950 text-blue-300 hover:bg-slate-800 border border-blue-800' : 'bg-slate-800 text-slate-400 hover:bg-slate-700 border border-slate-700'}` }, comp.name)
+                                )
+                              )
+                            )
+                          );
+                        })
                       )
                     )
-                  )
-                )
+                  );
+                })
               ),
               activeTab === 'terminology' && e('div', { className: "grid md:grid-cols-2 lg:grid-cols-3 gap-4" },
                 TERMINOLOGY.map((item, idx) =>
@@ -317,6 +324,9 @@
                   )
                 )
               )
+            ),
+            e('div', { className: "fixed bottom-4 right-4 z-50 w-[calc(100%-2rem)] md:w-80 lg:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80" },
+              e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "152", style: { borderRadius: '12px', background: '#0f172a' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
             )
           );
         }
