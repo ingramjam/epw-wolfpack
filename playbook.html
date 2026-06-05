@@ -55,7 +55,7 @@
         const POSITIONS_INFO = [
           {
             group: "Defensive Linemen (The Trench Monsters)",
-            desc: "You are the tip of the spear. We don't read and react; we attack and destroy. Your job is to reset the line of scrimmage in the offensive backfield. If the QB isn't having nightmares about you, you aren't hitting hard enough.",
+            desc: "You are the tip of the spear. We don't read and react; we attack and destroy. Your job is to reset the line of scrimmage in the offensive backfield. The 4-2-5 scheme relies HEAVILY on you controlling gaps and demanding double teams—with only 2 LBs behind you, you're the first line of defense. If the QB isn't having nightmares about you, you aren't hitting hard enough.",
             roles: [
               { id: 'LE', name: "Left End (LE)", role: "The edge assassin. Pin your ears back and hunt the QB. Set the edge violently in the run game. Nothing gets outside of you. Period.", comps: [{ name: "Myles Garrett", url: "https://www.youtube.com/results?search_query=myles+garrett+highlights" }, { name: "Maxx Crosby", url: "https://www.youtube.com/results?search_query=maxx+crosby+highlights" }] },
               { id: 'RE', name: "Right End (RE)", role: "The blindside nightmare. Same rules as the LE, but you usually attack the QB's blind spot. Squeeze the pocket until it bursts.", comps: [{ name: "Aidan Hutchinson", url: "https://www.youtube.com/results?search_query=aidan+hutchinson+highlights" }, { name: "T.J. Watt", url: "https://www.youtube.com/results?search_query=tj+watt+highlights" }] },
@@ -66,7 +66,7 @@
           },
           {
             group: "Linebackers (The Hit Squad)",
-            desc: "The alpha dogs of the defense. You are heat-seeking missiles. Diagnose the play, pull the trigger, and meet the ball carrier with bad intentions. We want collisions, not tackles.",
+            desc: "The alpha dogs of the defense. In our 4-2-5, you are box players FIRST—focused on filling A and B gaps against the run. You're usually only required to cover short zones in the passing game because our 5 DBs have deep coverage locked down. You are heat-seeking missiles. Diagnose the play, pull the trigger, and meet the ball carrier with bad intentions. We want collisions, not tackles.",
             roles: [
               { id: 'M', name: "Mike (M)", role: "The field general. You call the shots, plug the A-gaps, and knock heads off over the middle. Be loud, be angry, be everywhere.", comps: [{ name: "Fred Warner", url: "https://www.youtube.com/results?search_query=fred+warner+highlights" }, { name: "Roquan Smith", url: "https://www.youtube.com/results?search_query=roquan+smith+highlights" }] },
               { id: 'W', name: "Will (W)", role: "The weak-side enforcer. Use your speed to chase down plays from behind. When Coach calls your number on a blitz, arrive with violence.", comps: [{ name: "Dre Greenlaw", url: "https://www.youtube.com/results?search_query=dre+greenlaw+highlights" }, { name: "Patrick Queen", url: "https://www.youtube.com/results?search_query=patrick+queen+highlights" }] }
@@ -75,12 +75,12 @@
           },
           {
             group: "Defensive Backs (The No-Fly Zone)",
-            desc: "The apex predators of the secondary. If the ball is in the air, it belongs to you. If a receiver comes across the middle, make them pay the toll. No easy catches. No mercy.",
+            desc: "The apex predators of the secondary. With FIVE of you on the field, we eliminate coverage mismatches and can roll split-field coverage. The Corners and Free Safety are traditional DBs. But YOU—Rover and Sam—are the HYBRIDS. You must tackle like linebackers, blitz like edge rushers, AND drop into coverage like safeties. If the ball is in the air, it belongs to you. If a receiver crosses the middle, make them pay the toll. No easy catches. No mercy.",
             roles: [
               { id: 'C', name: "Corners (C)", role: "Island lockdown. Press, jam, and suffocate your receiver. Make the QB terrified to even look your way.", comps: [{ name: "Sauce Gardner", url: "https://www.youtube.com/results?search_query=sauce+gardner+highlights" }, { name: "Patrick Surtain II", url: "https://www.youtube.com/results?search_query=patrick+surtain+highlights" }] },
               { id: 'F', name: "Free Safety (F)", role: "The centerfield headhunter. Read the QB's eyes, steal the deep ball, and deliver punishing hits to anyone who crosses the middle.", comps: [{ name: "Kyle Hamilton", url: "https://www.youtube.com/results?search_query=kyle+hamilton+highlights" }, { name: "Minkah Fitzpatrick", url: "https://www.youtube.com/results?search_query=minkah+fitzpatrick+highlights" }] },
-              { id: 'R', name: "Rover (R)", role: "The weak-side hybrid nightmare. Too fast for linemen to block, too strong for receivers. Set the edge, blitz the corner, create chaos.", comps: [{ name: "Derwin James", url: "https://www.youtube.com/results?search_query=derwin+james+highlights" }, { name: "Brian Branch", url: "https://www.youtube.com/results?search_query=brian+branch+highlights" }] },
-              { id: '$', name: "Sam ($)", role: "The strong-side hybrid nightmare. Same ruthless job as the Rover, but you take away the Tight End's will to live on the strong side.", comps: [{ name: "Talanoa Hufanga", url: "https://www.youtube.com/results?search_query=talanoa+hufanga+highlights" }, { name: "Caleb Downs (Ohio St)", url: "https://www.youtube.com/results?search_query=caleb+downs+highlights" }] }
+              { id: 'R', name: "Rover (R)", role: "The weak-side hybrid nightmare. ATHLETIC MONSTER required. Too fast for linemen to block, too strong for receivers to ignore. You must handle slot receivers in coverage, blitz edge, AND fill the run game like a linebacker. You are the chess piece that makes this 4-2-5 work. Set the edge, blitz the corner, create chaos.", comps: [{ name: "Derwin James", url: "https://www.youtube.com/results?search_query=derwin+james+highlights" }, { name: "Brian Branch", url: "https://www.youtube.com/results?search_query=brian+branch+highlights" }] },
+              { id: '$', name: "Sam ($)", role: "The strong-side hybrid nightmare. Same superhero job as the Rover—you take away mismatches, blitz with purpose, jam tight ends over the middle, and cover like a DB. You're the answer to spread formations and modern offenses that want to use tight ends as receivers.", comps: [{ name: "Talanoa Hufanga", url: "https://www.youtube.com/results?search_query=talanoa+hufanga+highlights" }, { name: "Caleb Downs (Ohio St)", url: "https://www.youtube.com/results?search_query=caleb+downs+highlights" }] }
             ],
             color: "bg-blue-600"
           }
@@ -89,11 +89,16 @@
         const TERMINOLOGY = [
           { term: "Man Coverage", def: "You stick to one specific opponent. Wherever he goes, you go. Like gum under a desk." },
           { term: "Zone Coverage", def: "Guard a specific 'box' or area. Keep your eyes on the QB. Don't zone out thinking about your crush." },
-          { term: "Blitz", def: "Charging at the Quarterback like he owes you lunch money." },
-          { term: "Stunt / Twist", def: "Linemen switching spots right after the snap to confuse the offensive line." },
+          { term: "Cover 3 (Foundation Base)", def: "Split-field coverage used in the 4-2-5 as vanilla base. Three deep zones (FS middle, two CBs/Hybrids wide), with underneath/flat coverage. Provides deep support and straightforward run fits." },
+          { term: "Cover 4 / Quarters (Deep Pressure)", def: "Four deep DBs (split into quarters), heavily used in 4-2-5 on the wide side to protect against deep passing attacks. Hybrid players play low underneath on the boundary side." },
+          { term: "Cover 2 (Boundary Coverage)", def: "Two safeties split deep on boundary side in 4-2-5 split-field look. Leverage your hybrid and corner in underneath/flat. Classic Tampa Two principles." },
+          { term: "Blitz", def: "Charging at the Quarterback like he owes you lunch money. Our Rover and Sam ($) do this A LOT." },
+          { term: "Stunt / Twist", def: "Linemen switching spots right after the snap to confuse the offensive line. Creates penetration." },
           { term: "Spy", def: "Following the Quarterback everywhere. If he scrambles, you introduce him to the turf." },
-          { term: "Creep Up", def: "Sneaking closer to the line of scrimmage before the snap to disguise your blitz." },
-          { term: "The 'Prevent'", def: "Used late in the game. Back way up. Keep everything in front of you. The 'Please Don't Score' defense." }
+          { term: "Creep Up", def: "Sneaking closer to the line of scrimmage before the snap to disguise your blitz. Our hybrids use this constantly." },
+          { term: "The 'Prevent'", def: "Used late in the game. Back way up. Keep everything in front of you. The 'Please Don't Score' defense." },
+          { term: "Gap Control (4-2-5 Essential)", def: "With only 4 linemen and 2 LBs, we MUST control our gaps. A-gaps, B-gaps, C-gaps. Line controls 4, LBs fill 2. Blitzers replace gaps. Non-negotiable." },
+          { term: "Split-Field Coverage", def: "The 4-2-5 uses different looks on field (wide) vs boundary (short) sides. More aggressive blitzes away from TE. Understand your split-field responsibility." }
         ];
 
         const OFFENSE = [
@@ -103,21 +108,21 @@
         ];
 
         const defaultTips = {
-          'LE': "Hold the edge. Don't let anything outside.",
-          'RE': "Hold the edge. Contain the QB.",
-          'T': "Control the B-gap. Penetrate if you can.",
-          'N': "Control the A-gap. Demand a double team.",
-          'M': "Read your keys (Guards). Flow to the ball.",
-          'W': "Read your keys. Watch for cutbacks.",
-          'C': "Keep your cushion. Don't get beat deep.",
-          'F': "Read the QB's eyes. Deep middle is yours.",
-          'R': "Protect the flat. Support the run.",
-          '$': "Protect the flat. Jam the tight end if he's there."
+          'LE': "Hold the edge violently. You're the only thing stopping edge runs. Gap integrity is critical.",
+          'RE': "Contain the QB. You're on the blindside. Make him feel you all game.",
+          'T': "Control your B-gap. Get double-teamed? Destroy the pulling guard. Demand 2 blockers.",
+          'N': "Own the A-gap. The center is YOUR job. Make him work for everything.",
+          'M': "YOU call the defense. Read your keys (guards). Fill A-gaps hard. You're the QB of this 2-LB box.",
+          'W': "Scrape to the ball. You have secondary A/B-gap responsibility. Speed kills on the weak side.",
+          'C': "Lock down your receiver 1v1. In 4-2-5, you get help deep from FS, but boundary side? You own it.",
+          'F': "Deep middle is yours ALWAYS. Read the QB, steal the ball, find the closest body to hit.",
+          'R': "You're a hybrid SUPERSTAR. Blitz, cover, fill run gaps. Demand the ball.",
+          '$': "Same chaos as Rover, but strong side. Jam that TE. Be everywhere."
         };
 
         const PLAYS = [
-          { name: "4-2-5 ASTROS CROWN 3", type: "Base / Slant", desc: "D-Line slants weak. Will and Mike hold gaps. Standard Cover 3 shell behind it.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 40 30" }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 52 30" }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48 }, { id: 'M', x: 54, y: 48 }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'T': "Slant hard to the A-gap on the snap. Rip across the center's face.", 'N': "Slant strong to the A-gap. Take the center with you.", 'M': "Stay patient, read the guard, and fill your gap." } },
-          { name: "4-2-5 BAMA CROWN 3", type: "Blitz", desc: "Double interior pressure. Will and Mike linebackers blitz straight up the middle A-gaps.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'W': "Hit that A-gap like it's the last day of school. Fast and low!", 'M': "A-gap speed run. Meet Will at the Quarterback for a high-five.", 'F': "Both LBs are gone! You have to be hyper-aware of quick slants over the middle." } },
+          { name: "4-2-5 ASTROS CROWN 3", type: "Base / Slant", desc: "D-Line slants weak. Will and Mike hold gaps. Standard Cover 3 shell behind it. This is your VANILLA base coverage—foundational, gives you deep support.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 40 30" }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 52 30" }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48 }, { id: 'M', x: 54, y: 48 }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'T': "Slant hard to the A-gap on the snap. Rip across the center's face.", 'N': "Slant strong to the A-gap. Take the center with you.", 'M': "Stay patient, read the guard, and fill your gap. You're a BOX PLAYER first." } },
+          { name: "4-2-5 BAMA CROWN 3", type: "Blitz", desc: "Double interior pressure. Will and Mike linebackers blitz straight up the middle A-gaps. This STACKS the box but leaves your DBs with more coverage responsibility. Cover 3 underneath.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'W': "Hit that A-gap like it's the last day of school. Fast and low!", 'M': "A-gap speed run. Meet Will at the Quarterback for a high-five.", 'F': "Both LBs are gone! You have to be hyper-aware of quick slants over the middle. Your free safety role just became critical." } },
           { name: "4-2-5 SHATTER CROWN 3", type: "Blitz", desc: "Strong side safety ($) blitzes off the edge. Linebackers shift to cover.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { '$': "Creep up slowly before the snap. Don't give it away! Then explode off the edge.", 'M': "You must cover ground towards the strong side since $ is abandoning his zone.", 'RE': "Slant inside hard to take the tackle with you, clearing the lane for $." } },
           { name: "4-2-5 REAPER CROWN 3", type: "Blitz", desc: "Rover (R) brings heavy pressure from the weak side. Will shifts to cover flat.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Time the snap. You are the Reaper. Bring the heat off the edge!", 'LE': "Slant inside to the B-gap to pull the tackle away from the Rover.", 'W': "Get to the flat immediately to cover the area vacated by the Rover." } },
           { name: "4-2-5 OHIO CROWN 3", type: "Blitz", desc: "Double edge pressure from both Rover (R) and Sam ($). Linebackers cover middle.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Squeeze the pocket from the outside. Don't let the QB scramble your way.", '$': "Squeeze from the strong side. Meet the Rover at the QB.", 'W': "Head on a swivel. You and Mike have to cover a lot of ground in the flats." } },
@@ -125,7 +130,7 @@
           { name: "4-2-5 SOCAL CROWN 3", type: "Blitz", desc: "Similar to Shatter, Sam ($) blitzes strong side. Defense shifts strong.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40, path: "M 64 40 L 60 30" }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { '$': "Hit the edge with speed. Secure the outside so the QB can't roll out.", 'RE': "Slant hard inside to pull the blockers off the edge blitz.", 'M': "Rotate strong to cover the flat area left open by Sam." } },
           { name: "4-2-5 CALI CROWN 3", type: "Blitz", desc: "Rover blitzes from the weak side. D-line stunts weak.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 48 30" }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, zone: 'flat' }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 30 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Read the snap and bring the heat off the left edge.", 'LE': "Slant inside. Make a mess of the B-gap.", 'W': "Roll to the flat. Read the QB's eyes." } },
           { name: "4-2-5 RASCAL CROWN 3", type: "Blitz", desc: "Mike linebacker shoots the strong A-gap. Nose slants to B-gap.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40, path: "M 56 40 L 60 30" }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, zone: 'flat' }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 45, zone: 'flat' }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'M': "You are the Rascal. Right through the A-gap immediately on snap.", 'N': "Slant out to the B-gap to pull the guard away from Mike.", 'W': "Hold the middle flat zone. Look for crossing routes." } },
-          { name: "4-2-5 EARTHQUAKE CROWN 3", type: "Max Blitz", desc: "All out pressure! Rover, Will, Mike, and Sam ALL BLITZ. Deep 3 coverage behind it.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'C': "No flat help! If they throw short, rally to tackle.", 'F': "You are on an island in the middle. Read the QB, make a play on the ball.", 'W': "Total chaos! Meet the other 3 blitzers at the QB." } },
+          { name: "4-2-5 EARTHQUAKE CROWN 3", type: "Max Blitz", desc: "All out pressure! Rover, Will, Mike, and Sam ALL BLITZ—that's 4 simultaneous threats. Deep 3 behind it (FS + 2 CBs). Only use in obvious passing situations. This is the ultimate 4-2-5 attack play.", defense: [{ id: 'LE', x: 38, y: 40 }, { id: 'T', x: 44, y: 40 }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 42, blitz: true, path: "M 75 42 Q 72 35 68 25" }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'C': "No flat help! If they throw short, rally to tackle. You're on an island.", 'F': "You are on an island in the middle. Read the QB, make a play on the ball. This is your moment.", 'W': "Total chaos! Meet the other 3 blitzers at the QB. All-out attack from our 4-2-5!" } },
           { name: "4-2-5 WEAK RASCAL CROWN 3", type: "Blitz", desc: "Overload blitz from the weak side. Rover, Will, and Mike all bring pressure.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 48 30" }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'R': "Overload weak! Come off the edge hot.", 'W': "Hit the A-gap. The O-line won't know who to block.", 'M': "Hit the strong A-gap. Bring the house!" } }
         ];
 
@@ -223,7 +228,54 @@
               activeTab === 'dashboard' && e('div', { className: "space-y-8" },
                 e('div', { className: `${theme.panel} rounded-2xl p-6 md:p-8 border ${theme.border} shadow-xl` },
                   e('h2', { className: "text-3xl font-black mb-4" }, "Welcome to the Pack 🐺"),
-                  e('p', { className: "text-slate-300 text-lg leading-relaxed" }, "The 4-2-5 Defense is built on speed, violence, and communication. We don't wait for the offense to make a move; we dictate the game. Whether you're eating blocks in the trenches or playing centerfield in the secondary, do your job. Less TikTok, more tackling.")
+                  e('p', { className: "text-slate-300 text-lg leading-relaxed" }, "The 4-2-5 Defense is built on speed, versatility, and athletic hybrids. We feature FOUR down linemen (who must dominate gaps), TWO linebackers (box players, not coverage guys), and FIVE defensive backs (including two elite hybrid safeties). We don't wait for the offense to make a move; we dictate the game. Whether you're eating blocks in the trenches or playing centerfield in the secondary, do your job. Less TikTok, more tackling.")
+                ),
+                e('div', { className: "grid md:grid-cols-2 gap-6" },
+                  e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6` },
+                    e('h3', { className: `text-xl font-bold text-green-400 mb-4 border-b ${theme.border} pb-2` }, "✓ Why We Use 4-2-5"),
+                    e('ul', { className: "space-y-3" },
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-green-400 font-black mt-0.5" }, "✓"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200 block" }, "Versatility:"),
+                          e('span', { className: "text-slate-400 text-sm" }, "Adjusts to spread OR power run without substitutions.")
+                        )
+                      ),
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-green-400 font-black mt-0.5" }, "✓"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200 block" }, "5 DBs = No Mismatches:"),
+                          e('span', { className: "text-slate-400 text-sm" }, "Eliminates slot receiver mismatches. Your hybrids can tackle AND cover.")
+                        )
+                      ),
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-green-400 font-black mt-0.5" }, "✓"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200 block" }, "Split-Field Coverage:"),
+                          e('span', { className: "text-slate-400 text-sm" }, "Different looks field vs boundary. Attack weak side, protect TE side.")
+                        )
+                      )
+                    )
+                  ),
+                  e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6` },
+                    e('h3', { className: `text-xl font-bold text-red-400 mb-4 border-b ${theme.border} pb-2` }, "⚠ Weaknesses To Guard"),
+                    e('ul', { className: "space-y-3" },
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-red-400 font-black mt-0.5" }, "⚠"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200 block" }, "Only 2 LBs in Box:"),
+                          e('span', { className: "text-slate-400 text-sm" }, "Inside power runs hurt us if D-line loses the line. You MUST control gaps.")
+                        )
+                      ),
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-red-400 font-black mt-0.5" }, "⚠"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200 block" }, "Hybrid Demands:"),
+                          e('span', { className: "text-slate-400 text-sm" }, "Rover & Sam must be ELITE. Can't be true LBs or true DBs—must be BOTH.")
+                        )
+                      )
+                    )
+                  )
                 ),
                 e('div', { className: "grid md:grid-cols-2 gap-6" },
                   e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6` },
@@ -232,15 +284,22 @@
                       e('li', { className: "flex items-start gap-3" },
                         e('span', { className: "text-blue-400 mt-1" }, "🏈"),
                         e('div', null,
-                          e('strong', { className: "text-slate-200" }, "Talk to Each Other:"),
-                          e('span', { className: "text-slate-400 ml-2" }, "If you aren't talking pre-snap, you're wrong. Point out formations.")
+                          e('strong', { className: "text-slate-200" }, "Gap Discipline:"),
+                          e('span', { className: "text-slate-400 ml-2" }, "With only 2 LBs, gap integrity is LIFE. Line owns gaps, LBs replace. Blitzers fill their gaps.")
                         )
                       ),
                       e('li', { className: "flex items-start gap-3" },
                         e('span', { className: "text-blue-400 mt-1" }, "🏈"),
                         e('div', null,
-                          e('strong', { className: "text-slate-200" }, "Do YOUR Homework:"),
-                          e('span', { className: "text-slate-400 ml-2" }, "Don't try to play someone else's position. If you have the B-gap, own the B-gap.")
+                          e('strong', { className: "text-slate-200" }, "Communication is EVERYTHING:"),
+                          e('span', { className: "text-slate-400 ml-2" }, "Pre-snap reads, post-snap assignments. If you aren't talking, you're wrong.")
+                        )
+                      ),
+                      e('li', { className: "flex items-start gap-3" },
+                        e('span', { className: "text-blue-400 mt-1" }, "🏈"),
+                        e('div', null,
+                          e('strong', { className: "text-slate-200" }, "Hybrids Drive This Defense:"),
+                          e('span', { className: "text-slate-400 ml-2" }, "Rover & Sam, you are NOT linebackers. You are NOT safeties. You're BOTH. Embrace it.")
                         )
                       )
                     )
@@ -334,7 +393,7 @@
                 )
               )
             ),
-            e('div', { className: "hidden lg:fixed lg:bottom-4 lg:right-4 lg:z-50 lg:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80" },
+            e('div', { className: "hidden lg:block lg:fixed lg:bottom-4 lg:right-4 lg:z-50 lg:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80" },
               e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "152", style: { borderRadius: '12px', background: '#0f172a' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
             ),
             e('div', { className: "lg:hidden max-w-6xl mx-auto px-4 md:px-6 mt-8 mb-4" },
