@@ -134,6 +134,120 @@
           { name: "4-2-5 WEAK RASCAL CROWN 3", type: "Blitz", desc: "WEAK-SIDE OVERLOAD! Rover + Will + Mike ALL BLITZ weak (3 threats 1 weak A-gap). D-line stunts weak. Sam = only strong defender.", defense: [{ id: 'LE', x: 38, y: 40, path: "M 38 40 L 42 30" }, { id: 'T', x: 44, y: 40, path: "M 44 40 L 48 30" }, { id: 'N', x: 56, y: 40 }, { id: 'RE', x: 64, y: 40 }, { id: 'W', x: 46, y: 48, blitz: true, path: "M 46 48 L 46 30" }, { id: 'M', x: 54, y: 48, blitz: true, path: "M 54 48 L 54 30" }, { id: 'R', x: 25, y: 42, blitz: true, path: "M 25 42 Q 28 35 34 25" }, { id: '$', x: 75, y: 45, zone: 'flat' }, { id: 'C', x: 15, y: 50, zone: 'deep' }, { id: 'C', x: 85, y: 50, zone: 'deep' }, { id: 'F', x: 50, y: 70, zone: 'deep' }], tips: { 'LE': "Slant inside B-gap. You + line stunt create total weak chaos!", 'T': "Slant inside A-gap! 3 blitzers need you to open lanes!", 'N': "Maintain gap strong. Strong side run fits are critical.", 'RE': "Hold strong C-gap SOLO. Only strong-side edge defender!", 'W': "WEAK A-gap blitz! Overload reads = chaos in backfield!", 'M': "WEAK A-gap blitz STRONG side! 3-man weak read = confusion!", 'R': "WEAK edge + interior blitz! Overload the weak side!", '$': "ONLY strong-side flat/edge defender! Communication = life!", 'C': "Boundary deep third. Weak overload = strong side vulnerable!", 'F': "Deep middle. Weak 3-blitz = focus strong-side hot route!" } }
         ];
 
+        const QUIZZES = {
+          'LE': {
+            name: 'Left End (LE)',
+            questions: [
+              { q: "What's your PRIMARY job on defense?", a: "Hunt the QB and set the edge violently", wrong: ["Cover the slot receiver", "Help the nose tackle up front", "Make tackles in the backfield only"] },
+              { q: "When double-teamed, what do you do?", a: "Fight through and stay gap-sound", wrong: ["Fall back into coverage", "Let the guard go and pursue the QB", "Switch gaps with your tackle"] },
+              { q: "Your edge responsibility is the:", a: "Weak side C-gap (outside left)", wrong: ["Strong side A-gap", "B-gap between guard and tackle", "Middle of the field"] },
+              { q: "You get low pad level. What's your advantage?", a: "You control the blocker and the edge", wrong: ["You get tired faster", "The QB sees you coming", "Offensive lineman can drive you backwards"] },
+              { q: "If the offense runs a stretch play toward you, you must:", a: "Hold your edge and force it back inside", wrong: ["Pursue to the boundary", "Let the Will linebacker handle it", "Blitz up field immediately"] }
+            ]
+          },
+          'RE': {
+            name: 'Right End (RE)',
+            questions: [
+              { q: "Why are you called the 'blindside nightmare'?", a: "You attack the QB's blind spot on the right", wrong: ["You hide from offensive linemen", "You're faster than all DBs", "You call the plays for the defense"] },
+              { q: "Your primary gap assignment is:", a: "C-gap (outside right edge)", wrong: ["A-gap (center)", "B-gap (guard)", "Flat zone in coverage"] },
+              { q: "On a QB scramble, your job is to:", a: "Contain and squeeze the pocket", wrong: ["Chase him down field", "Drop into coverage", "Let him run free"] },
+              { q: "You're slanting inside on a stunt play. Why?", a: "To pull the tackle off and clear space for a blitz", wrong: ["To tackle the running back", "To confuse the offense", "To help the nose tackle"] },
+              { q: "Double team incoming from tackle and tight end. You:", a: "Stay low, demand the double, keep gap integrity", wrong: ["Run away and hide", "Blitz into the backfield alone", "Fall backwards"] }
+            ]
+          },
+          'T': {
+            name: 'Tackle (T)',
+            questions: [
+              { q: "Your nickname is the 'B-gap bulldozer.' What does that mean?", a: "You control and dominate the B-gap between guard and tackle", wrong: ["You run very slowly", "You only play on short yardage", "You never get blocked"] },
+              { q: "When pulling guards come at you, what do you do?", a: "Destroy them before they get started", wrong: ["Let them pass", "Follow them to the backfield", "Call for help immediately"] },
+              { q: "You demand:", a: "Double teams from center and guard", wrong: ["Single blocks only", "Attention from the QB", "Compliments after plays"] },
+              { q: "Your role is primarily a:", a: "Run defender in the interior", wrong: ["Deep safety", "Slot corner", "Backup linebacker"] },
+              { q: "On a stunt where Nose slants, you:", a: "Control your B-gap and flow to the play", wrong: ["Slant too and collide with Nose", "Back off and give him space", "Blitz up field alone"] },
+              { q: "You feel good when:", a: "Offensive linemen are gassed from double-teaming you", wrong: ["The offense scores", "The QB throws a touchdown", "You're on the sidelines resting"] }
+            ]
+          },
+          'N': {
+            name: 'Nose Tackle (N)',
+            questions: [
+              { q: "What is your 'home'?", a: "The A-gap directly over the center", wrong: ["The B-gap", "The slot", "The sideline"] },
+              { q: "What should you demand from the center?", a: "Double teams so your linebackers run free", wrong: ["Single blocks", "Let you through untouched", "To throw the football"] },
+              { q: "The center tries to snap the ball quickly. What do you do?", a: "Explode off the snap and penetrate A-gap", wrong: ["React slowly", "Wait for the running back", "Let the pull guard block you"] },
+              { q: "Your primary job is:", a: "Control the A-gap and be a gap anchor", wrong: ["Cover receivers", "Rush the passer", "Make tackles 10 yards downfield"] },
+              { q: "On a Stunt play, if Tackle slants into B-gap, you:", a: "Slant opposite to A-gap to keep gap integrity", wrong: ["Follow the Tackle's stunt", "Go straight upfield", "Drop into coverage"] },
+              { q: "Make the center regret playing football today by:", a: "Occupying 2-3 blockers and controlling your gap", wrong: ["Talking trash pre-snap", "Lying down", "Getting tired easily"] }
+            ]
+          },
+          'M': {
+            name: 'Mike Linebacker (M)',
+            questions: [
+              { q: "Who calls the defense?", a: "YOU - you're the field general", wrong: ["The defensive end", "The safety", "The coach from sidelines only"] },
+              { q: "Your A-gap assignment means:", a: "You protect the A-gap (between center and guard)", wrong: ["You cover all gaps", "You only cover outside gaps", "You never defend the run"] },
+              { q: "You're a box player because:", a: "Your main job is stopping the run, not deep coverage", wrong: ["You stand in a box shape", "You can't cover receivers", "You're slower than other LBs"] },
+              { q: "When Will linebacker blitzes away from his gap, you:", a: "Rotate/shift to cover his responsibility", wrong: ["Stay in your gap only", "Blitz with him", "Drop 20 yards back"] },
+              { q: "On a Cover 3 play, your coverage is:", a: "Hook/curl zone in the middle, not deep", wrong: ["Deep middle", "Flat zone", "Covering a receiver 1v1"] },
+              { q: "Your read keys are:", a: "The offensive guards - they tell you where the run is going", wrong: ["The safety", "The QB's feet only", "The running back's number"] },
+              { q: "You 'pull the trigger' means:", a: "You diagnose and attack the play aggressively", wrong: ["You throw the football", "You retreat backwards", "You wait for confirmation from coach"] }
+            ]
+          },
+          'W': {
+            name: 'Will Linebacker (W)',
+            questions: [
+              { q: "Your weak-side speed advantage lets you:", a: "Chase plays from behind and cover cutbacks", wrong: ["Cover the entire field", "Be slower than everyone", "Never blitz"] },
+              { q: "Your gap assignment is typically the:", a: "B-gap on the weak side", wrong: ["A-gap", "C-gap", "Entire secondary"] },
+              { q: "On a blitz call, you shoot the gap:", a: "With speed and violence, targeting the QB", wrong: ["Slowly and cautiously", "Only on obvious passing downs", "Never if a running back is there"] },
+              { q: "You're primarily a:", a: "BOX player focused on the run game first", wrong: ["Deep coverage defender", "Cornerback", "Pass rusher only"] },
+              { q: "When Rover hybrid blitzes weak side, you:", a: "Take over the flat zone coverage he abandoned", wrong: ["Blitz with him", "Go deep", "Do nothing"] },
+              { q: "Your reads start with:", a: "The offensive guards - flow to the ball", wrong: ["The QB's eyes", "The safety", "The scoreboard"] }
+            ]
+          },
+          'C': {
+            name: 'Corners (C)',
+            questions: [
+              { q: "Your coverage principle is:", a: "Island lockdown - 1v1, press your receiver", wrong: ["Help everyone", "Play deep safety", "Never jam receivers"] },
+              { q: "On the field (wide) side of the field, you have:", a: "More space to work with than boundary side", wrong: ["Less space", "No receivers", "No responsibilities"] },
+              { q: "You're on an island because:", a: "Deep safety (FS) is in the middle, TE side has the other safety", wrong: ["You're alone and forgotten", "There are no other DBs", "Linebackers can help you"] },
+              { q: "What's your greatest weapon?", a: "Confidence and technique - don't let your man breathe", wrong: ["Being slow", "Falling down", "Always looking at the QB"] },
+              { q: "A playaction bootleg is coming to your side. You:", a: "Stay with your receiver and don't get fooled", wrong: ["Chase the QB", "Ignore your man", "Help deep immediately"] },
+              { q: "You jam a receiver at the line because:", a: "You disrupt his route and buy time for pass rush", wrong: ["It's illegal", "You get tired", "It doesn't help anything"] }
+            ]
+          },
+          'F': {
+            name: 'Free Safety (F)',
+            questions: [
+              { q: "Your zone is:", a: "Deep middle - you anchor the deep coverage", wrong: ["The flat zone", "Left hash mark", "Strong side only"] },
+              { q: "What do you read on every play?", a: "The QB's eyes - they tell you where the ball is going", wrong: ["The running back", "The wind", "The scoreboard"] },
+              { q: "Your primary job is:", a: "Steal the ball and make big plays on the ball", wrong: ["Make solo tackles only", "Blitz the QB", "Cover receivers 1v1"] },
+              { q: "On Cover 2, you and the strong safety:", a: "Split the deep field - you cover middle/weak, he covers strong", wrong: ["Cover the same area", "Both go to the line", "Ignore each other"] },
+              { q: "When linebackers blitz away, you:", a: "Become hyper-aware of hook/curl and middle routes", wrong: ["Leave the middle open", "Go blitz too", "Take a break"] },
+              { q: "You deliver punishing hits when:", a: "Someone dares to cross the middle - that's YOUR ball", wrong: ["You're tired", "No one is watching", "The play is over"] }
+            ]
+          },
+          'R': {
+            name: 'Rover (R)',
+            questions: [
+              { q: "You are a HYBRID player, meaning:", a: "You must tackle like LB AND cover like a DB - you're BOTH", wrong: ["You're either a LB or a DB", "You're slower than both", "You're worse at both jobs"] },
+              { q: "Your speed is your superpower because:", a: "Too fast for linemen to block, too strong for receivers", wrong: ["You're the slowest on field", "Speed doesn't matter", "You can't use it effectively"] },
+              { q: "On weak-side run plays, you:", a: "Fill the flat zone and support the run game", wrong: ["Cover deep receivers", "Blitz always", "Stay 20 yards back"] },
+              { q: "On coverage, you handle:", a: "Slot receivers and underneath passing routes", wrong: ["Only deep balls", "All receivers", "Blocking"] },
+              { q: "When called to blitz, you:", a: "Burst off the edge with speed and violence to hit the QB", wrong: ["Jog casually", "Ask for help first", "Retreat"] },
+              { q: "You are the WEAK SIDE because:", a: "You defend the weak side (away from tight end)", wrong: ["You're weak", "You're always quiet", "You never tackle"] },
+              { q: "Your greatest strength is:", a: "Versatility - you're needed in run game AND passing game", wrong: ["Single specialty", "Specializing deep only", "Never doing anything new"] }
+            ]
+          },
+          '$': {
+            name: 'Sam ($)',
+            questions: [
+              { q: "Like Rover, you're a HYBRID because:", a: "You tackle like LB AND cover like DB - versatile nightmare", wrong: ["You're either one thing", "You're weak at both", "Hybrids don't exist"] },
+              { q: "Your assignment side is:", a: "Strong side (TE side) - you deal with the tight end", wrong: ["Weak side", "Deep only", "Middle"] },
+              { q: "The tight end is YOUR problem because:", a: "You jam him, cover him underneath, make him work", wrong: ["He covers you", "You ignore him", "Only safeties handle him"] },
+              { q: "On the strong-side flat zone, you:", a: "Support the run and defend underneath passing routes", wrong: ["Go deep", "Only cover receivers", "Never help run defense"] },
+              { q: "When blitzing from the strong edge, you:", a: "Attack with speed to squeeze the pocket from outside", wrong: ["Run upfield slowly", "Cover receivers", "Stay at home"] },
+              { q: "Split-field concept: You're different from Rover because:", a: "You play strong side (TE side) instead of weak side", wrong: ["You're worse", "There's no difference", "You never blitz"] },
+              { q: "Your chaos-making role means:", a: "You create offensive problems by being physical and unpredictable", wrong: ["You play conservative", "You wait for plays to develop", "You follow the QB"] }
+            ]
+          }
+        };
+
         function FieldDiagram({ play, activePosFilter, onPlayerClick }) {
           return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[4/3] max-h-[450px]" },
             e('svg', { viewBox: "0 0 100 100", className: "w-full h-full" },
@@ -191,6 +305,9 @@
           const [activeTab, setActiveTab] = React.useState('playbook');
           const [selectedPlay, setSelectedPlay] = React.useState(PLAYS[0]);
           const [globalFilter, setGlobalFilter] = React.useState('ALL');
+          const [quizPos, setQuizPos] = React.useState(null);
+          const [quizAnswers, setQuizAnswers] = React.useState({});
+          const [quizSubmitted, setQuizSubmitted] = React.useState(false);
 
           const currentTip = React.useMemo(() => {
             if (globalFilter === 'ALL') return "Select a specific position above, or click a player on the field to see their specific assignment!";
@@ -219,8 +336,8 @@
             ),
             e('nav', { className: "max-w-6xl mx-auto px-4 md:px-6 pt-6" },
               e('div', { className: `flex space-x-2 overflow-x-auto pb-2 border-b ${theme.border}` },
-                [{ id: 'dashboard', label: 'Locker Room' }, { id: 'playbook', label: 'Playbook Viewer' }, { id: 'positions', label: 'Positional Roles' }, { id: 'terminology', label: 'Secret Words' }].map(tab =>
-                  e('button', { key: tab.id, onClick: () => setActiveTab(tab.id), className: `px-4 py-3 rounded-t-xl font-bold text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'bg-blue-900 text-slate-200 border-t-2 border-slate-300' : 'text-slate-500 hover:bg-blue-950/50'}` }, tab.label)
+                [{ id: 'dashboard', label: 'Locker Room' }, { id: 'playbook', label: 'Playbook Viewer' }, { id: 'positions', label: 'Positional Roles' }, { id: 'terminology', label: 'Secret Words' }, { id: 'quiz', label: 'Quiz Time' }].map(tab =>
+                  e('button', { key: tab.id, onClick: () => { setActiveTab(tab.id); if(tab.id === 'quiz') { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); } }, className: `px-4 py-3 rounded-t-xl font-bold text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'bg-blue-900 text-slate-200 border-t-2 border-slate-300' : 'text-slate-500 hover:bg-blue-950/50'}` }, tab.label)
                 )
               )
             ),
@@ -390,6 +507,79 @@
                     e('h4', { className: "text-lg font-black text-slate-200 mb-2 pb-2 border-b border-slate-800" }, item.term),
                     e('p', { className: "text-slate-400 text-sm leading-relaxed" }, item.def)
                   )
+                )
+              ),
+              activeTab === 'quiz' && e('div', { className: "space-y-6" },
+                !quizPos ? e('div', { className: "space-y-4" },
+                  e('h2', { className: "text-3xl font-black text-slate-100 mb-8" }, "Test Your Knowledge 🎯"),
+                  e('p', { className: "text-slate-300 text-lg mb-6" }, "Pick a position and take the quiz. Get 70% or higher to PASS!"),
+                  e('div', { className: "grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" },
+                    POSITIONS_LIST.filter(p => p.id !== 'ALL').map(pos =>
+                      e('button', { 
+                        key: pos.id, 
+                        onClick: () => { setQuizPos(pos.id); setQuizAnswers({}); setQuizSubmitted(false); },
+                        className: "bg-blue-900 hover:bg-blue-800 border border-slate-600 text-slate-100 font-bold py-3 px-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:scale-105" 
+                      }, pos.label)
+                    )
+                  )
+                ) : e('div', { className: "space-y-6" },
+                  e('button', { 
+                    onClick: () => { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); },
+                    className: "mb-4 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm font-bold transition-all" 
+                  }, "← Back to Positions"),
+                  e('div', { className: `${theme.panel} rounded-2xl p-6 md:p-8 border ${theme.border} shadow-xl` },
+                    e('h2', { className: "text-3xl font-black text-slate-100 mb-2" }, QUIZZES[quizPos].name),
+                    e('p', { className: "text-slate-400 text-sm mb-6" }, quizSubmitted ? "Quiz submitted! Check your score below." : `Question ${Object.keys(quizAnswers).length + 1} of ${QUIZZES[quizPos].questions.length}`)
+                  ),
+                  e('div', { className: "space-y-6" },
+                    QUIZZES[quizPos].questions.map((q, qIdx) => {
+                      const answered = quizAnswers[qIdx];
+                      const allOptions = [q.a, ...q.wrong].sort(() => Math.random() - 0.5);
+                      const isCorrect = answered === q.a;
+                      const showResult = quizSubmitted && answered;
+                      
+                      return e('div', { key: qIdx, className: `bg-slate-900 border ${answered && quizSubmitted ? isCorrect ? 'border-green-600 bg-slate-900/50' : 'border-red-600 bg-slate-900/50' : theme.border} rounded-xl p-6 transition-all` },
+                        e('p', { className: "text-slate-100 font-bold text-lg mb-4" }, q.q),
+                        e('div', { className: "grid grid-cols-1 md:grid-cols-2 gap-3" },
+                          allOptions.map((opt, oIdx) =>
+                            e('button', {
+                              key: oIdx,
+                              disabled: quizSubmitted,
+                              onClick: () => { if (!quizSubmitted) setQuizAnswers({ ...quizAnswers, [qIdx]: opt }); },
+                              className: `py-3 px-4 rounded-lg font-semibold text-left transition-all text-sm ${
+                                answered === opt 
+                                  ? (showResult && isCorrect ? 'bg-green-600 text-white shadow-lg' : showResult && !isCorrect ? 'bg-red-600 text-white shadow-lg' : 'bg-blue-700 text-white')
+                                  : showResult && opt === q.a ? 'bg-green-600/40 text-green-200 border border-green-500'
+                                  : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
+                              } ${quizSubmitted ? 'cursor-default' : 'cursor-pointer hover:shadow-md'}`
+                            }, opt)
+                          )
+                        ),
+                        showResult && answered !== q.a && e('p', { className: "mt-3 text-red-300 text-sm font-semibold" }, `✗ Correct answer: ${q.a}`)
+                      );
+                    })
+                  ),
+                  !quizSubmitted ? e('button', {
+                    onClick: () => { setQuizSubmitted(true); },
+                    className: "mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:shadow-xl"
+                  }, "Submit Quiz") : (() => {
+                    const totalQ = QUIZZES[quizPos].questions.length;
+                    const correctCount = QUIZZES[quizPos].questions.filter(q => quizAnswers[QUIZZES[quizPos].questions.indexOf(q)] === q.a).length;
+                    const percentage = Math.round((correctCount / totalQ) * 100);
+                    const passed = percentage >= 70;
+                    
+                    return e('div', { className: "mt-8 space-y-4" },
+                      e('div', { className: `${passed ? 'bg-green-900/40 border-green-600' : 'bg-red-900/40 border-red-600'} rounded-xl p-8 border text-center` },
+                        e('p', { className: `text-4xl font-black mb-2 ${passed ? 'text-green-400' : 'text-red-400'}` }, percentage + '%'),
+                        e('p', { className: `text-xl font-bold ${passed ? 'text-green-300' : 'text-red-300'}` }, correctCount + '/' + totalQ + ' Correct'),
+                        e('p', { className: `text-lg font-bold mt-4 ${passed ? 'text-green-200' : 'text-red-200'}` }, passed ? '✅ PASS! Great job!' : '❌ Try again!')
+                      ),
+                      e('button', {
+                        onClick: () => { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); },
+                        className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all"
+                      }, 'Try Another Position')
+                    );
+                  })()
                 )
               )
             ),
