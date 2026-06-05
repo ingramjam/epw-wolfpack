@@ -249,11 +249,11 @@
         };
 
         function FieldDiagram({ play, activePosFilter, onPlayerClick }) {
-          return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[4/3] max-h-[450px]" },
+          return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[4/3] max-h-[600px]" },
             e('svg', { viewBox: "0 0 100 100", className: "w-full h-full" },
               e('defs', null,
-                e('marker', { id: "arrowhead", markerWidth: "4", markerHeight: "4", refX: "2", refY: "2", orient: "auto" },
-                  e('polygon', { points: "0 0, 4 2, 0 4", fill: "#ef4444" })
+                e('marker', { id: "arrowhead", markerWidth: "6", markerHeight: "6", refX: "3", refY: "3", orient: "auto" },
+                  e('polygon', { points: "0 0, 6 3, 0 6", fill: "#ef4444" })
                 )
               ),
               e('g', { stroke: "#ffffff", strokeOpacity: "0.2", strokeWidth: "0.2" },
@@ -262,27 +262,27 @@
                 ),
                 [10, 20, 30, 40, 50, 60, 70, 80, 90].map(y =>
                   e(Fragment, { key: `hash-${y}` },
-                    e('line', { x1: "33", y1: y, x2: "35", y2: y }),
-                    e('line', { x1: "65", y1: y, x2: "67", y2: y })
+                    e('line', { x1: "32", y1: y, x2: "36", y2: y, strokeWidth: "0.35" }),
+                    e('line', { x1: "64", y1: y, x2: "68", y2: y, strokeWidth: "0.35" })
                   )
                 )
               ),
               e('line', { x1: "0", y1: "38", x2: "100", y2: "38", stroke: "#3b82f6", strokeWidth: "0.5", strokeDasharray: "1 1" }),
               OFFENSE.map((pos, idx) =>
                 e('g', { key: `off-${idx}`, transform: `translate(${pos.x}, ${pos.y})` },
-                  e('circle', { cx: "0", cy: "0", r: "2.5", fill: "#1e293b", stroke: "#cbd5e1", strokeWidth: "0.3" }),
-                  e('text', { x: "0", y: "0.8", fontSize: "2", fill: "#cbd5e1", textAnchor: "middle", fontWeight: "bold" }, pos.id)
+                  e('circle', { cx: "0", cy: "0", r: "3.5", fill: "#1e293b", stroke: "#cbd5e1", strokeWidth: "0.4" }),
+                  e('text', { x: "0", y: "1.2", fontSize: "2.8", fill: "#cbd5e1", textAnchor: "middle", fontWeight: "bold" }, pos.id)
                 )
               ),
               play.defense.map((pos, idx) => {
                 const isHighlighted = activePosFilter === pos.id || activePosFilter === 'ALL';
                 const opacity = isHighlighted ? 1 : 0.2;
-                if (pos.path) return e('path', { key: `path-${idx}`, d: pos.path, fill: "none", stroke: "#ef4444", strokeOpacity: opacity, strokeWidth: "0.6", strokeDasharray: "1 1", markerEnd: "url(#arrowhead)" });
+                if (pos.path) return e('path', { key: `path-${idx}`, d: pos.path, fill: "none", stroke: "#ef4444", strokeOpacity: opacity, strokeWidth: "0.9", strokeDasharray: "1 1", markerEnd: "url(#arrowhead)" });
                 if (pos.zone) {
                   const yOffset = pos.zone === 'deep' ? 15 : 5;
-                  const rx = pos.zone === 'deep' ? 15 : 10;
-                  const ry = pos.zone === 'deep' ? 8 : 6;
-                  return e('ellipse', { key: `zone-${idx}`, cx: pos.x, cy: pos.y + yOffset, rx, ry, fill: "#3b82f6", fillOpacity: isHighlighted ? 0.2 : 0.05, stroke: "#3b82f6", strokeOpacity: opacity, strokeWidth: "0.3" });
+                  const rx = pos.zone === 'deep' ? 18 : 12;
+                  const ry = pos.zone === 'deep' ? 10 : 7.5;
+                  return e('ellipse', { key: `zone-${idx}`, cx: pos.x, cy: pos.y + yOffset, rx, ry, fill: "#3b82f6", fillOpacity: isHighlighted ? 0.2 : 0.05, stroke: "#3b82f6", strokeOpacity: opacity, strokeWidth: "0.4" });
                 }
                 return null;
               }),
@@ -293,8 +293,8 @@
                 if (pos.blitz) fillColor = "#dc2626";
                 if (isTargeted) fillColor = "#cbd5e1";
                 return e('g', { key: `def-${idx}`, transform: `translate(${pos.x}, ${pos.y})`, onClick: () => onPlayerClick(pos.id), className: `cursor-pointer transition-all duration-300 ${!isHighlighted ? 'opacity-40' : 'opacity-100'}`, style: { filter: isTargeted ? 'drop-shadow(0px 0px 3px rgba(203,213,225,0.8))' : 'none' } },
-                  e('polygon', { points: "0,-2.5 2.5,2.5 -2.5,2.5", fill: fillColor, stroke: "#ffffff", strokeWidth: "0.3" }),
-                  e('text', { x: "0", y: "1.5", fontSize: "2", fill: isTargeted ? '#0f172a' : '#ffffff', textAnchor: "middle", fontWeight: "bold" }, pos.id)
+                  e('polygon', { points: "0,-3.5 3.5,3.5 -3.5,3.5", fill: fillColor, stroke: "#ffffff", strokeWidth: "0.4" }),
+                  e('text', { x: "0", y: "2", fontSize: "2.6", fill: isTargeted ? '#0f172a' : '#ffffff', textAnchor: "middle", fontWeight: "bold" }, pos.id)
                 );
               })
             )
@@ -655,12 +655,12 @@
                 )
               )
             ),
-            e('div', { className: "hidden lg:block lg:fixed lg:bottom-4 lg:left-4 lg:z-50 lg:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80" },
-              e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "152", style: { borderRadius: '12px', background: '#0f172a' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
+            e('div', { className: "hidden lg:block lg:fixed lg:bottom-4 lg:left-4 lg:z-50 lg:w-[420px] shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80 bg-slate-950/40 backdrop-blur-sm" },
+              e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "200", style: { borderRadius: '12px', background: 'rgba(15, 23, 42, 0.3)' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
             ),
             e('div', { className: "lg:hidden max-w-6xl mx-auto px-4 md:px-6 mt-8 mb-4" },
-              e('div', { className: "w-full md:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80" },
-                e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "152", style: { borderRadius: '12px', background: '#0f172a' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
+              e('div', { className: "w-full md:w-96 shadow-[0_0_25px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden border border-slate-700/80 bg-slate-950/40 backdrop-blur-sm" },
+                e('iframe', { src: "https://open.spotify.com/embed/playlist/0afmcPB2IWTIcrSB2TLGc4?utm_source=generator&theme=0", width: "100%", height: "200", style: { borderRadius: '12px', background: 'rgba(15, 23, 42, 0.3)' }, frameBorder: "0", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" })
               )
             )
           );
