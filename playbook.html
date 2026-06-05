@@ -568,16 +568,86 @@
                     const percentage = Math.round((correctCount / totalQ) * 100);
                     const passed = percentage >= 70;
                     
+                    const handlePrint = () => {
+                      const quiz = QUIZZES[quizPos];
+                      const results = quiz.questions.map((q, idx) => {
+                        const answered = quizAnswers[idx];
+                        const isCorrect = answered === q.a;
+                        return `Q${idx+1}: ${q.q}\nYour Answer: ${answered}\nCorrect Answer: ${q.a}\nResult: ${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}\n`;
+                      }).join('\n');
+                      
+                      const printWindow = window.open('', '', 'height=600,width=800');
+                      printWindow.document.write(`
+                        <html><head><title>Quiz Results - ${quiz.name}</title></head><body style="font-family: Arial; padding: 20px; background: #f3f4f6;">
+                        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <h1 style="text-align: center; color: #1e293b; margin-bottom: 10px;">${quiz.name} - Quiz Results</h1>
+                        <hr style="border: 2px solid #3b82f6;">
+                        <div style="text-align: center; margin: 30px 0;">
+                        <p style="font-size: 36px; font-weight: bold; color: ${passed ? '#16a34a' : '#dc2626'}; margin: 10px 0;">${percentage}%</p>
+                        <p style="font-size: 20px; font-weight: bold; color: #475569;">${correctCount}/${totalQ} Correct</p>
+                        <p style="font-size: 18px; font-weight: bold; color: ${passed ? '#16a34a' : '#dc2626'}; margin-top: 15px;">${passed ? '✅ PASS! Great job!' : '❌ Try again!'}</p>
+                        </div>
+                        <hr style="border: 2px solid #3b82f6; margin: 30px 0;">
+                        <h2 style="color: #1e293b; margin-bottom: 20px;">Detailed Results:</h2>
+                        ${quiz.questions.map((q, idx) => {
+                          const answered = quizAnswers[idx];
+                          const isCorrect = answered === q.a;
+                          return `<div style="margin-bottom: 20px; padding: 15px; background: ${isCorrect ? '#dcfce7' : '#fee2e2'}; border-left: 4px solid ${isCorrect ? '#16a34a' : '#dc2626'}; border-radius: 4px;">
+                            <p style="font-weight: bold; color: #1e293b; margin: 0 0 10px 0;"><strong>Q${idx+1}:</strong> ${q.q}</p>
+                            <p style="color: #475569; margin: 5px 0;"><strong>Your Answer:</strong> ${answered}</p>
+                            <p style="color: #475569; margin: 5px 0;"><strong>Correct Answer:</strong> ${q.a}</p>
+                            <p style="color: ${isCorrect ? '#16a34a' : '#dc2626'}; font-weight: bold; margin: 5px 0;">${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}</p>
+                          </div>`;
+                        }).join('')}
+                        <hr style="border: 1px solid #cbd5e1; margin: 30px 0;">
+                        <p style="text-align: center; color: #64748b; font-size: 12px; margin-top: 20px;">Valley Wolves 4-2-5 Defense Playbook - Quiz Results<br>Printed: ${new Date().toLocaleString()}</p>
+                        </div>
+                        </body></html>
+                      `);
+                      printWindow.document.close();
+                      printWindow.print();
+                    };
+                    
+                    const handleEmailCoach = () => {
+                      const quiz = QUIZZES[quizPos];
+                      const results = quiz.questions.map((q, idx) => {
+                        const answered = quizAnswers[idx];
+                        const isCorrect = answered === q.a;
+                        return `Q${idx+1}: ${q.q}\nStudent Answer: ${answered}\nCorrect Answer: ${q.a}\nResult: ${isCorrect ? '✓ CORRECT' : '✗ INCORRECT'}\n`;
+                      }).join('\n');
+                      
+                      const subject = `Valley Wolves Quiz Results - ${quiz.name}`;
+                      const body = `Coach,\n\nHere are the quiz results for the ${quiz.name} position:\n\nScore: ${percentage}% (${correctCount}/${totalQ} Correct)\nStatus: ${passed ? 'PASS ✅' : 'NEEDS REVIEW ❌'}\n\nDetailed Results:\n${results}\n\nDate: ${new Date().toLocaleString()}\n\nBest regards,\nValley Wolves Defense Playbook`;
+                      
+                      window.location.href = `mailto:ingramjam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    };
+                    
                     return e('div', { className: "mt-8 space-y-4" },
                       e('div', { className: `${passed ? 'bg-green-900/40 border-green-600' : 'bg-red-900/40 border-red-600'} rounded-xl p-8 border text-center` },
                         e('p', { className: `text-4xl font-black mb-2 ${passed ? 'text-green-400' : 'text-red-400'}` }, percentage + '%'),
                         e('p', { className: `text-xl font-bold ${passed ? 'text-green-300' : 'text-red-300'}` }, correctCount + '/' + totalQ + ' Correct'),
                         e('p', { className: `text-lg font-bold mt-4 ${passed ? 'text-green-200' : 'text-red-200'}` }, passed ? '✅ PASS! Great job!' : '❌ Try again!')
                       ),
-                      e('button', {
-                        onClick: () => { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); },
-                        className: "w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all"
-                      }, 'Try Another Position')
+                      e('div', { className: "grid grid-cols-2 gap-3" },
+                        e('button', {
+                          onClick: handlePrint,
+                          className: "bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-all"
+                        }, '🖨️ Print Results'),
+                        e('button', {
+                          onClick: handleEmailCoach,
+                          className: "bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg transition-all"
+                        }, '📧 Email Coach')
+                      ),
+                      e('div', { className: "grid grid-cols-2 gap-3" },
+                        e('button', {
+                          onClick: () => { setQuizAnswers({}); setQuizSubmitted(false); },
+                          className: "bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-lg transition-all"
+                        }, '🔄 Retry This'),
+                        e('button', {
+                          onClick: () => { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); },
+                          className: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all"
+                        }, '📚 Try Another')
+                      )
                     );
                   })()
                 )
