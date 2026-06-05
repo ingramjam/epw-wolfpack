@@ -270,8 +270,8 @@
               e('line', { x1: "0", y1: "38", x2: "100", y2: "38", stroke: "#3b82f6", strokeWidth: "0.5", strokeDasharray: "1 1" }),
               OFFENSE.map((pos, idx) =>
                 e('g', { key: `off-${idx}`, transform: `translate(${pos.x}, ${pos.y})` },
-                  e('circle', { cx: "0", cy: "0", r: "3.5", fill: "#1e293b", stroke: "#cbd5e1", strokeWidth: "0.4" }),
-                  e('text', { x: "0", y: "1.2", fontSize: "2.8", fill: "#cbd5e1", textAnchor: "middle", fontWeight: "bold" }, pos.id)
+                  e('circle', { cx: "0", cy: "0", r: "5", fill: "#1e293b", stroke: "#cbd5e1", strokeWidth: "0.4" }),
+                  e('text', { x: "0", y: "1.5", fontSize: "3.5", fill: "#cbd5e1", textAnchor: "middle", fontWeight: "bold" }, pos.id)
                 )
               ),
               play.defense.map((pos, idx) => {
@@ -293,8 +293,8 @@
                 if (pos.blitz) fillColor = "#dc2626";
                 if (isTargeted) fillColor = "#cbd5e1";
                 return e('g', { key: `def-${idx}`, transform: `translate(${pos.x}, ${pos.y})`, onClick: () => onPlayerClick(pos.id), className: `cursor-pointer transition-all duration-300 ${!isHighlighted ? 'opacity-40' : 'opacity-100'}`, style: { filter: isTargeted ? 'drop-shadow(0px 0px 3px rgba(203,213,225,0.8))' : 'none' } },
-                  e('polygon', { points: "0,-3.5 3.5,3.5 -3.5,3.5", fill: fillColor, stroke: "#ffffff", strokeWidth: "0.4" }),
-                  e('text', { x: "0", y: "2", fontSize: "2.6", fill: isTargeted ? '#0f172a' : '#ffffff', textAnchor: "middle", fontWeight: "bold" }, pos.id)
+                  e('polygon', { points: "0,-5 5,5 -5,5", fill: fillColor, stroke: "#ffffff", strokeWidth: "0.5" }),
+                  e('text', { x: "0", y: "2.5", fontSize: "3.4", fill: isTargeted ? '#0f172a' : '#ffffff', textAnchor: "middle", fontWeight: "bold" }, pos.id)
                 );
               })
             )
