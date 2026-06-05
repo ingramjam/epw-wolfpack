@@ -336,7 +336,7 @@
             ),
             e('nav', { className: "max-w-6xl mx-auto px-4 md:px-6 pt-6" },
               e('div', { className: `flex space-x-2 overflow-x-auto pb-2 border-b ${theme.border}` },
-                [{ id: 'dashboard', label: 'Locker Room' }, { id: 'playbook', label: 'Playbook Viewer' }, { id: 'positions', label: 'Positional Roles' }, { id: 'terminology', label: 'Secret Words' }, { id: 'quiz', label: 'Quiz Time' }].map(tab =>
+                [{ id: 'dashboard', label: 'Locker Room' }, { id: 'playbook', label: 'Playbook Viewer' }, { id: 'positions', label: 'Positional Roles' }, { id: 'terminology', label: 'Key Terms' }, { id: 'quiz', label: 'Quiz Time' }].map(tab =>
                   e('button', { key: tab.id, onClick: () => { setActiveTab(tab.id); if(tab.id === 'quiz') { setQuizPos(null); setQuizAnswers({}); setQuizSubmitted(false); } }, className: `px-4 py-3 rounded-t-xl font-bold text-sm whitespace-nowrap transition-all ${activeTab === tab.id ? 'bg-blue-900 text-slate-200 border-t-2 border-slate-300' : 'text-slate-500 hover:bg-blue-950/50'}` }, tab.label)
                 )
               )
@@ -446,21 +446,23 @@
                   )
                 )
               ),
-              activeTab === 'playbook' && e('div', { className: "grid lg:grid-cols-3 gap-6" },
-                e('div', { className: `lg:col-span-1 bg-slate-900 border ${theme.border} rounded-2xl p-4 shadow-xl flex flex-col h-[500px]` },
-                  e('h3', { className: "text-lg font-black text-slate-200 mb-4 border-b border-slate-700 pb-2 uppercase" }, "Select Play"),
-                  e('div', { className: "flex-1 overflow-y-auto space-y-2" },
-                    PLAYS.map((play, idx) =>
-                      e('button', { key: idx, onClick: () => setSelectedPlay(play), className: `w-full text-left p-3 rounded-xl border transition-all ${selectedPlay.name === play.name ? 'bg-blue-600 border-blue-400' : 'bg-slate-950 border-slate-800 hover:border-slate-500'}` },
-                        e('span', { className: `font-bold text-sm block ${selectedPlay.name === play.name ? 'text-white' : 'text-slate-300'}` }, play.name),
-                        e('span', { className: `text-[10px] uppercase tracking-wider font-semibold ${selectedPlay.name === play.name ? 'text-blue-200' : 'text-red-400'}` }, play.type)
+              activeTab === 'playbook' && e('div', { className: "space-y-6" },
+                e('div', { className: "" },
+                  e(FieldDiagram, { play: selectedPlay, activePosFilter: globalFilter, onPlayerClick: handlePlayerClick })
+                ),
+                e('div', { className: "grid md:grid-cols-3 gap-6" },
+                  e('div', { className: `md:col-span-1 bg-slate-900 border ${theme.border} rounded-2xl p-4 shadow-xl flex flex-col h-[500px]` },
+                    e('h3', { className: "text-lg font-black text-slate-200 mb-4 border-b border-slate-700 pb-2 uppercase" }, "Select Play"),
+                    e('div', { className: "flex-1 overflow-y-auto space-y-2" },
+                      PLAYS.map((play, idx) =>
+                        e('button', { key: idx, onClick: () => setSelectedPlay(play), className: `w-full text-left p-3 rounded-xl border transition-all ${selectedPlay.name === play.name ? 'bg-blue-600 border-blue-400' : 'bg-slate-950 border-slate-800 hover:border-slate-500'}` },
+                          e('span', { className: `font-bold text-sm block ${selectedPlay.name === play.name ? 'text-white' : 'text-slate-300'}` }, play.name),
+                          e('span', { className: `text-[10px] uppercase tracking-wider font-semibold ${selectedPlay.name === play.name ? 'text-blue-200' : 'text-red-400'}` }, play.type)
+                        )
                       )
                     )
-                  )
-                ),
-                e('div', { className: "lg:col-span-2 space-y-6" },
-                  e(FieldDiagram, { play: selectedPlay, activePosFilter: globalFilter, onPlayerClick: handlePlayerClick }),
-                  e('div', { className: `bg-slate-900 border ${theme.border} rounded-2xl p-6 shadow-xl` },
+                  ),
+                  e('div', { className: `md:col-span-2 bg-slate-900 border ${theme.border} rounded-2xl p-6 shadow-xl` },
                     e('h3', { className: "text-2xl font-black text-white mb-2" }, selectedPlay.name),
                     e('span', { className: "inline-block px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg text-xs font-bold" }, selectedPlay.type),
                     e('p', { className: "text-slate-300 font-medium mt-4 mb-6" }, selectedPlay.desc),
