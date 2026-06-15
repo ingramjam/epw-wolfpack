@@ -102,10 +102,9 @@
         ];
 
         const OFFENSE = [
-          { id: 'LT', x: 62, y: 35 }, { id: 'LG', x: 56, y: 35 }, { id: 'C', x: 50, y: 35 },
+          { id: 'C', x: 50, y: 35 }, { id: 'LG', x: 56, y: 35 }, { id: 'LT', x: 62, y: 35 },
           { id: 'RG', x: 44, y: 35 }, { id: 'RT', x: 38, y: 35 }, { id: 'Q', x: 50, y: 25 },
-          { id: 'RB', x: 45, y: 42 }, { id: 'TE', x: 68, y: 35 },
-          { id: 'X', x: 15, y: 30 }, { id: 'Y', x: 85, y: 30 }, { id: 'Z', x: 20, y: 45 }
+          { id: 'X', x: 15, y: 35 }, { id: 'Y', x: 68, y: 35 }, { id: 'Z', x: 85, y: 35 }
         ];
 
         const defaultTips = {
@@ -249,15 +248,9 @@
           }
         };
 
-        function FieldDiagram({ play, activePosFilter, onPlayerClick, zoom }) {
-          const z = zoom || 1;
-          const baseW = 90, baseH = 80, baseX = 5, baseY = 15;
-          const vw = baseW / z, vh = baseH / z;
-          const vx = baseX + (baseW - vw) / 2;
-          const vy = baseY + (baseH - vh) / 2;
-          const viewBox = `${vx} ${vy} ${vw} ${vh}`;
-          return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[20/11]" },
-            e('svg', { viewBox, className: "w-full h-full" },
+        function FieldDiagram({ play, activePosFilter, onPlayerClick }) {
+          return e('div', { className: "w-full relative bg-green-900 rounded-xl overflow-hidden border-4 border-slate-700 shadow-2xl aspect-[4/3] max-h-[320px]" },
+            e('svg', { viewBox: "5 -5 90 110", className: "w-full h-full" },
               e('defs', null,
                 e('marker', { id: "arrowhead", markerWidth: "6", markerHeight: "6", refX: "3", refY: "3", orient: "auto" },
                   e('polygon', { points: "0 0, 6 3, 0 6", fill: "#ef4444" })
@@ -315,10 +308,6 @@
           const [quizPos, setQuizPos] = React.useState(null);
           const [quizAnswers, setQuizAnswers] = React.useState({});
           const [quizSubmitted, setQuizSubmitted] = React.useState(false);
-          const [zoom, setZoom] = React.useState(1);
-          const zoomIn  = () => setZoom(z => Math.min(4, parseFloat((z + 0.25).toFixed(2))));
-          const zoomOut = () => setZoom(z => Math.max(0.5, parseFloat((z - 0.25).toFixed(2))));
-          const zoomReset = () => setZoom(1);
 
           const currentTip = React.useMemo(() => {
             if (globalFilter === 'ALL') return "Select a specific position above, or click a player on the field to see their specific assignment!";
@@ -458,15 +447,8 @@
                 )
               ),
               activeTab === 'playbook' && e('div', { className: "space-y-6" },
-                e('div', { className: "space-y-2" },
-                  e('div', { className: "flex items-center justify-end gap-1.5 mb-2" },
-                    e('span', { className: "text-slate-500 text-xs mr-1 uppercase tracking-wider font-bold" }, "Zoom"),
-                    e('button', { onClick: zoomOut, title: "Zoom out", className: "w-8 h-8 bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 rounded-lg font-bold text-lg border b[...]
-                    e('span', { className: "text-slate-300 text-sm font-mono w-14 text-center tabular-nums" }, `${Math.round(zoom * 100)}%`),
-                    e('button', { onClick: zoomIn, title: "Zoom in", className: "w-8 h-8 bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 rounded-lg font-bold text-lg border bor[...]
-                    zoom !== 1 && e('button', { onClick: zoomReset, className: "px-3 h-8 bg-slate-700 hover:bg-slate-600 text-slate-400 rounded-lg text-xs font-bold border border-slate-600 ml-1" [...]
-                  ),
-                  e(FieldDiagram, { play: selectedPlay, activePosFilter: globalFilter, onPlayerClick: handlePlayerClick, zoom })
+                e('div', { className: "" },
+                  e(FieldDiagram, { play: selectedPlay, activePosFilter: globalFilter, onPlayerClick: handlePlayerClick })
                 ),
                 e('div', { className: "grid md:grid-cols-3 gap-6" },
                   e('div', { className: `md:col-span-1 bg-slate-900 border ${theme.border} rounded-2xl p-4 shadow-xl flex flex-col h-[500px]` },
